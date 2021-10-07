@@ -7,17 +7,18 @@ interface LayoutProps {
     children: ReactNode;
     title: string;
     description: string;
+    className?: string;
 }
 
-const Layout = ({ children, title, description }: LayoutProps) => {
+const Layout = ({ children, title, description, className }: LayoutProps) => {
     return (
         <div className="subpixel-antialiased text-gray-900">
             <Head>
-                <title>{title} | Victor Navarro</title>
+                <title>{title} | Eduardo Gómez</title>
                 <meta name="description" content={description} />
             </Head>
             <main className="bg-white">
-                <Navbar />
+                <Navbar className={className} />
                 {children}
             </main>
             <Footer />

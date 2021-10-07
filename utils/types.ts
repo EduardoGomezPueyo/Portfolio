@@ -4,7 +4,6 @@ export interface Project {
     blurDataURL: string;
     source: string;
     message: string;
-    labels: string[];
     order: number;
     content: string;
 }

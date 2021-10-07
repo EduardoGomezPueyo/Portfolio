@@ -9,9 +9,14 @@ const routes = [
     { title: "Home", href: "/" },
     { title: "Projects", href: "/projects" },
     { title: "Contact", href: "/#contact" },
+    { title: "About", href: "/about" },
 ];
 
-const Navbar = () => {
+interface NavbarProps {
+    className?: string;
+}
+
+const Navbar = ({ className }: NavbarProps) => {
     const { asPath, back } = useRouter();
 
     const isHome = asPath === "/" || asPath.startsWith("/#");
@@ -24,8 +29,8 @@ const Navbar = () => {
                         <div className={classNames("flex items-center justify-end", !isHome ? "justify-between" : "")}>
                             {!isHome ? (
                                 <button onClick={back} className={classNames("inline-flex justify-center items-center p-2 rounded-md", focusRingClasses)}>
-                                    <ArrowLeftIcon aria-hidden="true" className="h-6 w-6 text-gray-400" />
-                                    <span className="sr-only md:not-sr-only	md:ml-2 text-gray-700 transition duration-200 ease-in-out text-gray-400">
+                                    <ArrowLeftIcon aria-hidden="true" className={classNames("h-6 w-6 text-gray-400", className)} />
+                                    <span className={classNames("sr-only md:not-sr-only	md:ml-2 transition duration-200 ease-in-out text-gray-400", className)}>
                                         Go back
                                     </span>
                                 </button>
@@ -37,7 +42,11 @@ const Navbar = () => {
                                             key={route.href}
                                             href={route.href}
                                             style={{ animationDelay: `${index * 200 + 1000}ms` }}
-                                            className={classNames(`md:text-xl opacity-0 animate-fade-in-down`, asPath === route.href ? "text-gray-600" : "")}
+                                            className={classNames(
+                                                `md:text-xl opacity-0 animate-fade-in-down`,
+                                                className,
+                                                asPath === route.href ? "text-gray-600" : ""
+                                            )}
                                         >
                                             {route.title}
                                         </Link>

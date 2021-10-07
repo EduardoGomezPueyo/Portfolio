@@ -40,11 +40,12 @@ module.exports = {
             "2xl": "1600px",
             "3xl": "1800px",
         },
-        gridTemplateColumns: {
-            // Complex site-specific column configuration
-            projects: "800px 800px",
-        },
+
         extend: {
+            gridTemplateColumns: {
+                // Complex site-specific column configuration
+                projects: "800px 800px",
+            },
             fontFamily: {
                 sans: ["Nunito", ...defaultTheme.fontFamily.sans],
             },

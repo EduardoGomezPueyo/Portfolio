@@ -16,7 +16,6 @@ export const getProjects = async (): Promise<Project[]> => {
                 title: data.title,
                 image: img.src,
                 blurDataURL: base64,
-                labels: data.labels,
                 message: data.message,
                 order: data.order,
                 source: data.source,
