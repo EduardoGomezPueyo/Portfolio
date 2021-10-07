@@ -12,7 +12,9 @@ const ProjectGoals = ({ title, children, researchQuestions }: ProjectGoalsProps)
                 <p className="text-base lg:text-lg text-gray-600">{children}</p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
                     {researchQuestions.map((question) => (
-                        <p className="text-base lg:text-lg text-gray-600 border-l-2 border-pink-600 pl-4">{question}</p>
+                        <p key={question} className="text-base lg:text-lg text-gray-600 border-l-2 border-pink-600 pl-4">
+                            {question}
+                        </p>
                     ))}
                 </div>
             </div>

@@ -14,7 +14,7 @@ const introChallenges = ({ challenges, children }: introChallengesProps) => {
                 <h2 className="mb-4 text-xl md:text-2xl font-bold">Challenges</h2>
                 <ol className="list-decimal list-inside text-base lg:text-lg text-pink-600">
                     {challenges.map((challenge) => (
-                        <li className="py-2">
+                        <li className="py-2" key={challenge}>
                             <p className="text-black inline">{challenge}</p>
                         </li>
                     ))}
