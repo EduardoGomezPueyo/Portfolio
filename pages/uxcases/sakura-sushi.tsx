@@ -60,8 +60,8 @@ const About = () => {
             />
             <IntroChallenges challenges={challenges}>
                 Sakura Sushi is the booking app for a sushi restaurant. For this project, we decided to use a goal-directed design method which revolves around
-                focusing on our persona creation and goals. will help uses with the information they need and a streamlined booking process. This project covers
-                the design and prototyping for the app, not the actual development.
+                focusing on our persona creation and goals. The application will help uses with the information they need and a streamlined booking process.
+                This project covers the design and prototyping for the app, not the actual development.
             </IntroChallenges>
             <ProjectGoals title="Project Goals" researchQuestions={researchQuestions}>
                 Most booking services do not provide accurate information or its access is not prominent. It’s hard for the user to make bookings without all
@@ -70,7 +70,7 @@ const About = () => {
                 system usability scale.
             </ProjectGoals>
             <Paragraph title="User Research">
-                The research conducted focused on interviews and started assuming that people would not need much information when making a booking at a
+                The research conducted focused on interviews and started by assuming that people would not need much information when making a booking at a
                 restaurant. Also, that people would like to go socialize more now that the pandemic restrictions have been partially lifted. Research showed
                 that people, especially people with allergies and people who take care of others (a parent with a child with type 1 diabetes) look thoroughly
                 through menus and the information they provide.
