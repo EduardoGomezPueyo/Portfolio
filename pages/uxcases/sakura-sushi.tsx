@@ -48,7 +48,7 @@ const personas = [
 
 const About = () => {
     return (
-        <Layout title="About" description="Learn something about me!" className="text-white">
+        <Layout title="Sakura Sushi" description="Sakura Sushi UX Case Study" className="text-white">
             <div className="mt-16 md:mt-0 animate-fade-in-down animation-delay-500 opacity-0">
                 <Image src={SushiHero} layout="responsive" alt="Sakura Sushi App Hero Image" />
             </div>
