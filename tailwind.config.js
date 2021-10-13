@@ -42,6 +42,7 @@ module.exports = {
         },
 
         extend: {
+            ringWidth: ["hover"],
             gridTemplateColumns: {
                 // Complex site-specific column configuration
                 projects: "800px 800px",
