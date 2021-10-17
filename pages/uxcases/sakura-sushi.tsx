@@ -1,5 +1,4 @@
 import Layout from "../../components/layout";
-import Link from "../../components/link";
 import Image from "next/image";
 import RoleBar from "../../components/post-components/role-bar";
 import IntroChallenges from "../../components/post-components/intro-challenges";
@@ -11,7 +10,8 @@ import Challenge from "../../components/post-components/challenge";
 
 import SushiHero from "../../public/sakura-sushi/hero-cover.jpg";
 import SushiPrototype from "../../public/sakura-sushi/prototype.jpg";
-import SushiPaper from "../../public/sakura-sushi/paper-wireframe.jpg";
+import PaperWireframes from "../../public/paper-wireframe.jpg";
+import Closure from "../../components/post-components/closure";
 
 const challenges = [
     "Eliminate login barrier for the users",
@@ -46,7 +46,7 @@ const personas = [
     },
 ];
 
-const About = () => {
+const SakuraSushi = () => {
     return (
         <Layout title="Sakura Sushi" description="Sakura Sushi UX Case Study" className="text-white">
             <div className="mt-16 md:mt-0 animate-fade-in-down animation-delay-500 opacity-0">
@@ -58,12 +58,12 @@ const About = () => {
                 link="https://drive.google.com/file/d/1kZOgycqyszABP6fM9rfYYgeb_i5XjcW6/view?usp=sharing"
                 prototype="https://www.figma.com/proto/6NPhJwcdjbMvAo9cGXrYnX/UX-Course-Lo-Fi-and-Hi-Fi-Wirefarme?page-id=84%3A3580&node-id=84%3A3619&viewport=241%2C48%2C0.24&scaling=scale-down&starting-point-node-id=84%3A3619"
             />
-            <IntroChallenges challenges={challenges}>
+            <IntroChallenges challenges={challenges} className="text-pink-600">
                 Sakura Sushi is the booking app for a sushi restaurant. For this project, we decided to use a goal-directed design method which revolves around
-                focusing on our persona creation and goals. The application will help uses with the information they need and a streamlined booking process.
+                focusing on our persona creation and goals. The application will help users with the information they need and a streamlined booking process.
                 This project covers the design and prototyping for the app, not the actual development.
             </IntroChallenges>
-            <ProjectGoals title="Project Goals" researchQuestions={researchQuestions}>
+            <ProjectGoals title="Project Goals" researchQuestions={researchQuestions} className="border-pink-600">
                 Most booking services do not provide accurate information or its access is not prominent. It’s hard for the user to make bookings without all
                 available information. The goal is to find out how easy it is for users to complete a booking and understand the specific challenges that users
                 might face in the searching, scheduling, and reservation processes. For this, we&apos;ll focus on three KPI: Time on task, conversion rates and
@@ -75,13 +75,13 @@ const About = () => {
                 that people, especially people with allergies and people who take care of others (a parent with a child with type 1 diabetes) look thoroughly
                 through menus and the information they provide.
             </Paragraph>
-            <Personas personas={personas}></Personas>
+            <Personas personas={personas} className="border-pink-600" />
             <ImageParagraph title="User Journey" image="/user-journey-map.jpg" altText="User Journey Map">
                 The app should easily provide all the information the user needs regarding the menu items and their nutritional values. It also should have a
                 streamlined booking process that’s both easy and quick to be used.
             </ImageParagraph>
             <div className="w-full md:w-[85%] mx-auto pb-8">
-                <Image src={SushiPaper} layout="responsive" alt="Paper wireframes for Sushi Booking App" />
+                <Image src={PaperWireframes} layout="responsive" alt="Paper wireframes for Sushi Booking App" />
             </div>
             <Paragraph title="Wireframes and Flow">
                 After sketching out some p&amp;p wireframes they were digitalized and prototyped over them. Then a usability test with users was conducted in
@@ -93,10 +93,11 @@ const About = () => {
                 <Image src={SushiPrototype} layout="responsive" alt="Sushi App Wireframe Prototype" />
             </div>
             <Challenge
-                title="Eliminate login barrier for the users"
+                accentColor="text-pink-600"
+                title={challenges[0]}
                 subtitle="Challenge 1"
                 image="/sakura-sushi/login-mockup.png"
-                altText="some alt"
+                altText="Sakura Sushi login mockup screen"
                 className="bg-gray-200"
             >
                 One of the issues that most of the participants raised during the usability testing conducted was the ability to access the app without login
@@ -104,16 +105,23 @@ const About = () => {
                 the capability to make the booking without a registration. With this in mind, the login screen of the app was designed to enable the users to
                 log in with their Google account, their mail and password or without registration.
             </Challenge>
-            <Challenge title="Make a streamlined booking process" subtitle="Challenge 2" image="/sakura-sushi/booking-mockup.png" altText="some alt">
+            <Challenge
+                accentColor="text-pink-600"
+                title={challenges[1]}
+                subtitle="Challenge 2"
+                image="/sakura-sushi/booking-mockup.png"
+                altText="Sakura Sushi booking mockup screen"
+            >
                 The usability tests brought up another issue with the prototype: the booking process was confusing. This issue was actually split into two. The
                 first one: all the information needed to make a booking should be inputted in one place. The second one: there was a need from all the users to
                 have a confirmation screen so they could see all the details that they have inputted before confirming the reservation
             </Challenge>
             <Challenge
-                title="Provide accessible and quick to find useful information"
+                accentColor="text-pink-600"
+                title={challenges[2]}
                 subtitle="Challenge 3"
                 image="/sakura-sushi/home-mockup.png"
-                altText="some alt"
+                altText="Sakura Sushi home mockup screen"
                 className="bg-gray-200"
             >
                 When doing the first round of testing, one of the things that research brought up quite quickly was the need to make the main features of the
@@ -121,10 +129,11 @@ const About = () => {
                 booking or dish information. This was a great insight to make changes in the design and make a more clear decision path for the user.
             </Challenge>
             <Challenge
-                title="Make a simple yet useful app, not for just booking"
+                accentColor="text-pink-600"
+                title={challenges[3]}
                 subtitle="Challenge 4"
                 image="/sakura-sushi/recipes-mockup.png"
-                altText="some alt"
+                altText="Sakura Sushi recipes mockup screen"
             >
                 These times have taught us that staying at home is not an easy thing to do. So, when designing the app one thing that was kept in mind was to
                 add something that was not directly related to business, and this was recipes to try at home. This is a feature that would benefit users as they
@@ -140,16 +149,9 @@ const About = () => {
                 </p>
             </Paragraph>
 
-            <div className="text-center text-lg my-20 px-8 md:px-0">
-                <p>Thank you for your time,</p>
-                <p>if you have any suggestions you can contact me at</p>
-                <Link href="mailto:eduardogomezpueyo@gmail.com">eduardogomezpueyo@gmail.com</Link>
-                <p>
-                    or send me a message through <Link href="https://www.linkedin.com/in/eduardo-gomez-pueyo">LinkedIn</Link>
-                </p>
-            </div>
+            <Closure />
         </Layout>
     );
 };
 
-export default About;
+export default SakuraSushi;
