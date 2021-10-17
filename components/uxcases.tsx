@@ -2,8 +2,9 @@ import Section from "./section";
 import Link from "./link";
 import Image from "next/image";
 
-import comingSoon from "../public/coming-soon.jpg";
+import ComingSoon from "../public/coming-soon.jpg";
 import SushiThumbnail from "../public/sakura-thumbnail.jpg";
+import MechThumbnail from "../public/mechbuild-thumbnail.jpg";
 
 const UxCases = () => {
     return (
@@ -14,14 +15,14 @@ const UxCases = () => {
                 <Link href="/uxcases/sakura-sushi" className="overflow-hidden rounded-none lg:rounded-xl focus:ring-pink-600 hover:ring-2 hover:ring-pink-600">
                     <Image src={SushiThumbnail} placeholder="blur" layout="responsive" alt="Sushi Booking App Image" />
                 </Link>
-                <Link href="/" className="overflow-hidden rounded-none lg:rounded-xl focus:ring-blue-500 hover:ring-2 hover:ring-blue-500">
-                    <Image src={comingSoon} placeholder="blur" layout="responsive" alt="" />
+                <Link href="/uxcases/mechbuild" className="overflow-hidden rounded-none lg:rounded-xl focus:ring-yellow-800 hover:ring-2 hover:ring-yellow-800">
+                    <Image src={MechThumbnail} placeholder="blur" layout="responsive" alt="Mechanical Keyboard Web Store" />
                 </Link>
                 <Link href="/" className="overflow-hidden rounded-none lg:rounded-xl focus:ring-blue-500 hover:ring-2 hover:ring-blue-500">
-                    <Image src={comingSoon} placeholder="blur" layout="responsive" alt="" />
+                    <Image src={ComingSoon} placeholder="blur" layout="responsive" alt="" />
                 </Link>
                 <Link href="/" className="overflow-hidden rounded-none lg:rounded-xl focus:ring-blue-500 hover:ring-2 hover:ring-blue-500">
-                    <Image src={comingSoon} placeholder="blur" layout="responsive" alt="" />
+                    <Image src={ComingSoon} placeholder="blur" layout="responsive" alt="" />
                 </Link>
             </div>
         </Section>
