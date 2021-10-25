@@ -3,6 +3,7 @@ import { GetStaticProps } from "next";
 import { getProjects } from "../utils/data";
 import Layout from "../components/layout";
 import ExperienceSection from "../components/experience-section";
+import UxCases from "../components/uxcases";
 
 interface ProjectProps {
     webProjects: Project[];
@@ -12,6 +13,7 @@ interface ProjectProps {
 const Projects = ({ webProjects, mobileProjects }: ProjectProps) => {
     return (
         <Layout title="Projects" description="List of projects made by Eduardo Gómez">
+            <UxCases />
             <ExperienceSection projects={webProjects} h1="Web projects" h2="Some of the things I've worked on" />
             <ExperienceSection
                 projects={mobileProjects}
