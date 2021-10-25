@@ -10,6 +10,7 @@ const routes = [
     { title: "Projects", href: "/projects" },
     { title: "Contact", href: "/#contact" },
     { title: "About", href: "/about" },
+    { title: "Resume", href: "https://drive.google.com/file/d/1o6GlaB6lD3kcPP1l3XQj-owWwelmH-fh/view?usp=sharing" },
 ];
 
 interface NavbarProps {
@@ -25,7 +26,7 @@ const Navbar = ({ className }: NavbarProps) => {
         <Disclosure as="nav" className="absolute top-0 left-0 w-full z-10">
             {({ open }) => (
                 <div className={classNames(open ? "bg-white shadow-lg rounded-md" : "", "px-6 py-4 md:px-6 md:py-8 lg:px-8 lg:py-10")}>
-                    <div className="max-w-5xl mx-auto">
+                    <div className="max-w-6xl mx-auto">
                         <div className={classNames("flex items-center justify-end", !isHome ? "justify-between" : "")}>
                             {!isHome ? (
                                 <button onClick={back} className={classNames("inline-flex justify-center items-center p-2 rounded-md", focusRingClasses)}>
