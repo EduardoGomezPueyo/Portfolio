@@ -86,7 +86,7 @@ const Mechbuild = () => {
             <Paragraph title="Wireframes and Flow">
                 After sketching out some p&amp;p wireframes they were digitalized and prototyped over them. Then a usability test with users was conducted in
                 order to discover new user pain points. Thanks to this, new insights were brought to light and changes were made as the prototype started to
-                change from low-fidelity to high fidelity. A lot of time was spent on this steps to ensure that the users were front and center and always
+                change from low-fidelity to high fidelity. A lot of time was spent on these steps to ensure that the users were front and center and always
                 keeping them in mind during the designing phases.
             </Paragraph>
             <div className="w-[60%] mx-auto pb-8">
