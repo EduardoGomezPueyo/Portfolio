@@ -5,6 +5,7 @@ import Image from "next/image";
 import ComingSoon from "../public/coming-soon.jpg";
 import SushiThumbnail from "../public/sakura-thumbnail.jpg";
 import MechThumbnail from "../public/mechbuild-thumbnail.jpg";
+import CollegeThumbnail from "../public/linkarms-thumbnail.jpg";
 
 const UxCases = () => {
     return (
@@ -18,8 +19,13 @@ const UxCases = () => {
                 <Link href="/uxcases/mechbuild" className="overflow-hidden rounded-none lg:rounded-xl focus:ring-yellow-800 hover:ring-2 hover:ring-yellow-800">
                     <Image src={MechThumbnail} placeholder="blur" layout="responsive" alt="Mechanical Keyboard Web Store" />
                 </Link>
-                <Link href="/" className="overflow-hidden rounded-none lg:rounded-xl focus:ring-blue-500 hover:ring-2 hover:ring-blue-500">
-                    <Image src={ComingSoon} placeholder="blur" layout="responsive" alt="" />
+                <Link href="/uxcases/linkarms" className="overflow-hidden rounded-none lg:rounded-xl focus:ring-blue-500 hover:ring-2 hover:ring-blue-500">
+                    <Image
+                        src={CollegeThumbnail}
+                        placeholder="blur"
+                        layout="responsive"
+                        alt="App and responsive website for students and graduates looking for workplace mentors"
+                    />
                 </Link>
                 <Link href="/" className="overflow-hidden rounded-none lg:rounded-xl focus:ring-blue-500 hover:ring-2 hover:ring-blue-500">
                     <Image src={ComingSoon} placeholder="blur" layout="responsive" alt="" />
