@@ -10,7 +10,7 @@ const routes = [
     { title: "Projects", href: "/projects" },
     { title: "Contact", href: "/#contact" },
     { title: "About", href: "/about" },
-    { title: "Resume", href: "https://drive.google.com/file/d/1o6GlaB6lD3kcPP1l3XQj-owWwelmH-fh/view?usp=sharing" },
+    { title: "Resume", href: "https://drive.google.com/file/d/1U_DR1FO79LYj5BwRxbeXbhJbW_60xbyA/view?usp=sharing" },
 ];
 
 interface NavbarProps {
