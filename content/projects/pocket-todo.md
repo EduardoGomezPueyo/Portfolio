@@ -1,7 +1,7 @@
 ---
 title: Pocket Todo
 image: pocket-todo.jpg
-source: https://play.google.com/store/apps/details?id=com.pocket.todo
+source: https://github.com/vimtor/pocket-todo
 message: Start being more productive
 order: 1
 ---
