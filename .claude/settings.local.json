@@ -19,7 +19,15 @@
       "Bash(npm run build:*)",
       "Bash(npx astro:*)",
       "Bash(node -e \"\nconst { getCollection } = await import\\(''astro:content''\\);\n\")",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(gh auth:*)",
+      "Bash(git status:*)",
+      "Bash(git fetch:*)",
+      "Bash(findstr:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }

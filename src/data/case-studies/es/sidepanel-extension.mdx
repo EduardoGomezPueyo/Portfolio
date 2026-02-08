@@ -1,10 +1,10 @@
 ---
-title: "Side Panel Extension"
-description: "A mentorship platform that bridges the gap between college students and working professionals, pairing guided connections with curated resources to ease the transition into the workforce."
+title: "Rediseño de Extensión"
+description: "Rediseño del producto principal de Harmonix: migración de una extensión inyectada en cada página web a un Side Panel único, simplificando la arquitectura, eliminando funciones que nadie usaba y mejorando la estabilidad del producto."
 thumbnail: "/images/case-studies/sidepanel/thumbnail.jpg"
 heroImage: "/images/case-studies/sidepanel/hero.jpg"
 role: "Product designer"
-timeline: "3 weeks"
+timeline: "1 año"
 tools: ["Figma"]
 team: "Harmonix"
 order: 1
@@ -12,68 +12,59 @@ lang: "es"
 slug: "sidepanel"
 ---
 
-## The problem
+import ImageCarousel from '../../../components/ImageCarousel.astro';
 
-Entering the workforce after college is overwhelming. Students and recent graduates often lack professional connections, industry-specific guidance, and access to curated resources that could help them navigate their first career steps. Existing platforms either focus on job listings without mentorship or offer mentorship without structured resource sharing.
+## Contexto
 
-LinkArms started with a question: **what if a single platform could connect young professionals with experienced mentors while also providing the resources they need to succeed?**
+**Harmonix** es una herramienta que se establece sobre los lugares habituales de trabajo de los usuarios de CRM — Outlook, Salesforce, Dynamics, LinkedIn — y unifica sus herramientas de comunicación e información. Funciona principalmente a través de una extensión de navegador que se adapta al contenido de cada página web, pero también cuenta con una aplicación web que sirve como centro de control: configuraciones para administradores y personalización para cada usuario (firma, números de teléfono, avatar...).
 
-## Research & Discovery
+Al tratarse de una extensión de Google Chrome, para poder ponerse sobre cualquier página web necesita permisos específicos de Google.
 
-I began with the assumption that users primarily needed a connection tool — something to match students with mentors and get out of the way. Interviews quickly complicated that picture.
+## El problema
 
-Research revealed that college students would primarily access the platform through a mobile app, treating it like another social network they check throughout the day. But an important secondary finding emerged: older professionals — the mentors — preferred accessing the platform on larger screens like tablets or desktops. A mobile-only solution would serve one side of the equation while alienating the other.
+La extensión tenía un problema de arquitectura que afectaba directamente a la experiencia. Cada vez que el usuario navegaba a una nueva página, se cargaba una nueva instancia de la extensión — con su propio marcador de teléfono, email, mensajería — lo que provocaba conflictos entre instancias, recargas inesperadas y pérdida de contexto. Además, cada página web tiene una estructura interna distinta, lo que obligaba a un proceso de adaptación personalizado para que la extensión no tapara ni desplazara los elementos nativos de cada sitio.
 
-This shifted the project scope from a standalone app to **a cross-platform solution** — a mobile app paired with a responsive website, ensuring both students and mentors could engage comfortably on their preferred devices.
+El resultado era una extensión que funcionaba de forma inestable y que requería un esfuerzo técnico desproporcionado para mantener.
 
-## Personas
+La oportunidad apareció cuando Google introdujo el Side Panel: un espacio dedicado del navegador para extensiones, independiente del contenido de la página. Una única instancia, sin necesidad de inyectarse en cada web, sin conflictos. Esto no era solo una mejora técnica — era la posibilidad de replantear toda la experiencia del producto principal.
 
-Two personas emerged from the research to anchor design decisions:
+![Extensión original](/images/case-studies/sidepanel/old-extension.jpg)
 
-**Albert, 21 — College Student.** Approaching graduation with limited professional experience. He's motivated but uncertain about how to break into his field. He wants structured guidance from someone who's already navigated the transition — not generic career advice from a website, but a real person who understands his specific situation.
+## Lo que nos dijeron los clientes
 
-**Liz, 34 — UX Designer.** A self-taught designer who remembers how difficult it was to start without guidance. She wants to mentor younger professionals and share the resources that helped her grow. Her main concern is that volunteering her time should feel organized and worthwhile, not chaotic or poorly structured.
+El feedback de los clientes reflejaba los problemas de arquitectura en forma de frustraciones concretas: las llamadas a veces no entraban, la extensión se recargaba después de un tiempo de inactividad, a veces no aparecía donde debería, y la sincronización entre vistas no era fiable. Eran síntomas distintos de un mismo problema de fondo — cada página cargaba su propia instancia y no había garantía de estabilidad.
 
-## Design process
+Pero más allá de los problemas técnicos, las conversaciones con clientes también revelaron algo sobre el producto en sí: había funcionalidades que nadie usaba. La sección de nurturing, la bandeja de salida, ciertas vistas que se habían añadido con el tiempo — los clientes no las mencionaban porque directamente las ignoraban. Al mismo tiempo, las funciones que sí valoraban — el detalle de contacto, el historial de actividades, las sugerencias de follow-up — quedaban enterradas entre todo lo demás.
 
-### From paper to pixels
+El rediseño no podía ser solo un cambio de contenedor. Tenía que ser también una oportunidad para decidir qué merecía seguir existiendo.
 
-The design process started with a Crazy Eights exercise to rapidly explore different layout concepts. These quick sketches became the foundation for paper wireframes, which were then digitalized and evolved into interactive prototypes ready for testing.
+## Soluciones
 
-The initial concept organized the app around three core areas: mentor search, messaging, and resources — each accessible through conventional navigation patterns.
+<ImageCarousel
+  images={[
+    { src: "/images/case-studies/sidepanel/navigation.jpg", alt: "Navigation and general view of the application on top of a page" },
+    { src: "/images/case-studies/sidepanel/inbox.jpg", alt: "Organized work that's unified in a single inbox" },
+    { src: "/images/case-studies/sidepanel/showcase.jpg", alt: "Different screens for the application" },
+  ]}
+  caption="Sidepanel rediseñado"
+/>
 
-### What testing revealed
+### Una sola instancia, un contexto que no se pierde
 
-Usability testing exposed three challenges that directly shaped the final design:
+La migración al Side Panel resolvió de raíz el problema de las múltiples instancias. Ahora la extensión vive en un espacio único del navegador, independiente de la página que el usuario tenga abierta. Esto eliminó las recargas inesperadas, los conflictos entre marcadores y la pérdida de contexto al navegar. Para desarrollo supuso un punto de control mucho más manejable; para los usuarios, una extensión que por fin se comporta de forma predecible.
 
-1. **Hamburger menus created friction.** Despite being a familiar convention, participants found the hamburger menu cumbersome. Accessing different sections required multiple taps and felt slower than expected for an app they'd use frequently.
+### Simplificando lo que sobra, unificando lo que se repite
 
-2. **Cross-platform inconsistency broke trust.** Early prototypes didn't maintain visual or functional consistency between mobile and desktop. Participants who tested both felt like they were using two different products, which undermined confidence in the platform.
+Con el cambio de contenedor llegó la oportunidad de revisar todo el contenido. Las secciones que nadie usaba — nurturing, bandeja de salida — se eliminaron. Las que eran demasiado similares, como tareas y bandeja de entrada, se unificaron en una sola vista. El objetivo era que cada elemento del Side Panel justificara su presencia: si no aportaba valor demostrable, no merecía el espacio.
 
-3. **Resources felt like a dead end.** The resources section lacked any filtering or search functionality. Participants scrolled aimlessly through content without a way to find what was relevant to their field or interests.
+### Reorganizando la navegación para un espacio reducido
 
-These findings drove three focused design iterations, each targeting a specific usability problem.
+La extensión original contaba con una barra lateral izquierda para navegar entre vistas generales (tareas, bandeja de entrada, pipeline) y una zona de detalle de contacto a la derecha con historial de actividades, sugerencias de follow-up e informes de agentes de IA. Al comprimir todo en el Side Panel, esta estructura ya no funcionaba. La navegación se rediseñó para que las vistas principales y el detalle de contacto convivieran de forma fluida en un espacio más reducido, priorizando lo que los usuarios consultaban con más frecuencia.
 
-![Link Arms divider](/images/case-studies/linkarms/divider.jpg)
+## Reflexión
 
-## Solutions
+Este fue un proyecto de un año y la decisión más difícil no fue técnica — fue decidir qué quitar. Cuando llevas tiempo diseñando un producto, conoces cada función y sabes cómo resolver sus problemas, lo que hace fácil justificar que todo se quede. Pero los clientes no ven lo que tú ves: ellos ven funciones que ignoran compitiendo por espacio con las que realmente necesitan.
 
-### Replacing the hamburger with direct access
+La migración al Side Panel forzó esa conversación. No era posible trasladar todo tal cual a un espacio más pequeño, así que cada función tuvo que ganarse su sitio. Esa restricción resultó ser la mejor herramienta de diseño del proyecto: obligó a tomar decisiones que llevaban tiempo pendientes.
 
-The hamburger menu was replaced with a persistent tab bar providing single-tap access to all primary sections. This reduced navigation from a two-step process (open menu, then select) to a one-step action, removing friction for an app designed to be checked frequently throughout the day.
-
-### Unifying the Experience Across Devices
-
-Two parallel strategies ensured a seamless experience across devices. On the design side, both platforms shared identical color palettes, typography, and component patterns, with responsive adjustments for weight and size rather than entirely different layouts. On the functional side, chat history and user activity would synchronize across devices — a conversation started on mobile continuing seamlessly on desktop.
-
-### Turning Resources into a Usable Tool
-
-The resources section was rebuilt with search and filter capabilities, allowing users to find content by topic, format, or relevance to their field. This transformed what had been a passive content dump into an active tool for professional development. Future iterations would add the ability for users to curate, save, and share their own resource collections.
-
-## Reflection
-
-This project taught me that designing for two distinct user groups within the same platform requires more than just accommodating different screen sizes. Students and mentors have fundamentally different motivations, usage patterns, and expectations — and the design needs to respect both without compromising either.
-
-If I were to continue iterating, I'd focus on the onboarding experience for mentors like Liz — making it easier to define availability and mentorship scope upfront — and on refining the mentor search to help students like Albert find not just any match, but the right one for their specific goals.
-
-This is the kind of product I wish had existed when I finished my own degree — and that awareness kept the work grounded in real needs rather than theoretical features.
+Si continuara iterando, me centraría en medir cómo la simplificación ha afectado a la adopción de las funciones que sí se mantuvieron, y en explorar cómo el Side Panel puede adaptarse contextualmente — mostrando información diferente según la página que el usuario tenga abierta, sin volver a los problemas de la arquitectura anterior.
