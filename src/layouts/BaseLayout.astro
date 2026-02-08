@@ -1,0 +1,47 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import type { Lang } from '../i18n/languages';
+import SEOHead from '../components/SEOHead.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: Lang;
+  image?: string;
+}
+
+const { title, description, lang, image } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <SEOHead title={title} description={description} lang={lang} image={image} />
+    <ClientRouter />
+    <!-- Dark mode: prevent flash -->
+    <script is:inline>
+      (function() {
+        function applyTheme() {
+          const theme = localStorage.getItem('theme');
+          if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        }
+        applyTheme();
+        document.addEventListener('astro:after-swap', applyTheme);
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Nav lang={lang} />
+    <main class="flex-1 pt-16">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

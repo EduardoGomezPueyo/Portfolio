@@ -1,0 +1,46 @@
+---
+import { getCollection, render } from 'astro:content';
+import CaseStudyLayout from '../../../layouts/CaseStudyLayout.astro';
+
+const lang = 'es';
+
+export async function getStaticPaths() {
+  const studies = (await getCollection('case-studies')).filter(
+    (s) => s.data.lang === 'es'
+  );
+
+  return studies.map((study) => ({
+    params: { slug: study.data.slug },
+    props: { study },
+  }));
+}
+
+const { study } = Astro.props;
+const { Content } = await render(study);
+
+// Find next project
+const allStudies = (await getCollection('case-studies'))
+  .filter((s) => s.data.lang === lang)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const currentIndex = allStudies.findIndex((s) => s.data.slug === study.data.slug);
+const nextStudy = allStudies[(currentIndex + 1) % allStudies.length];
+const nextProject = nextStudy && nextStudy.data.slug !== study.data.slug
+  ? { title: nextStudy.data.title, slug: nextStudy.data.slug, thumbnail: nextStudy.data.thumbnail }
+  : undefined;
+---
+
+<CaseStudyLayout
+  title={study.data.title}
+  description={study.data.description}
+  heroImage={study.data.heroImage}
+  role={study.data.role}
+  timeline={study.data.timeline}
+  tools={study.data.tools}
+  team={study.data.team}
+  lang={lang}
+  slug={study.data.slug}
+  nextProject={nextProject}
+>
+  <Content />
+</CaseStudyLayout>

@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:eduardo-gomez-pueyo-portfolio.netlify.app)",
+      "WebFetch(domain:www.yichenxie.com)",
+      "WebFetch(domain:www.jyang.io)",
+      "Bash(dir:*)",
+      "WebFetch(domain:kristianphoenix.com)",
+      "WebFetch(domain:samwill.is)",
+      "WebFetch(domain:docs.astro.build)",
+      "WebFetch(domain:yichenxie.com)",
+      "WebFetch(domain:jyang.io)",
+      "WebSearch",
+      "WebFetch(domain:eastondev.com)",
+      "Bash(npm create astro@latest:*)",
+      "Bash(npm install:*)",
+      "Bash(npx astro add:*)",
+      "Bash(curl:*)",
+      "Bash(npm run build:*)",
+      "Bash(npx astro:*)",
+      "Bash(node -e \"\nconst { getCollection } = await import\\(''astro:content''\\);\n\")",
+      "Bash(npm run dev:*)"
+    ]
+  }
+}

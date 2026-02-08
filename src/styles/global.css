@@ -1,0 +1,130 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Variable.woff2') format('woff2');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-VariableItalic.woff2') format('woff2');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('/fonts/GeneralSans-Variable.woff2') format('woff2');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('/fonts/GeneralSans-VariableItalic.woff2') format('woff2');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@theme {
+  --font-display: 'Satoshi', system-ui, sans-serif;
+  --font-body: 'General Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-300: #d4d4d4;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-500: #737373;
+  --color-neutral-600: #525252;
+  --color-neutral-700: #404040;
+  --color-neutral-800: #262626;
+  --color-neutral-900: #171717;
+  --color-neutral-950: #0a0a0a;
+
+  --spacing-content: 72rem;
+  --spacing-narrow: 42rem;
+
+  --animate-fade-in-up: fade-in-up 0.7s ease-out both;
+  --animate-fade-in: fade-in 0.5s ease-out both;
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(1.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-neutral-50);
+  color: var(--color-neutral-900);
+  line-height: 1.6;
+}
+
+.dark body {
+  background-color: var(--color-neutral-950);
+  color: var(--color-neutral-100);
+}
+
+/* Typography scale - Major Third (1.25) */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-neutral-900);
+  color: var(--color-neutral-50);
+}
+
+.dark ::selection {
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-950);
+}

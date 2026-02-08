@@ -1,0 +1,78 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import MetadataGrid from '../components/MetadataGrid.astro';
+import NextProject from '../components/NextProject.astro';
+import type { Lang } from '../i18n/languages';
+
+interface Props {
+  title: string;
+  description: string;
+  heroImage: string;
+  role: string;
+  timeline: string;
+  tools: string[];
+  team?: string;
+  lang: Lang;
+  slug: string;
+  nextProject?: {
+    title: string;
+    slug: string;
+    thumbnail: string;
+  };
+}
+
+const { title, description, heroImage, role, timeline, tools, team, lang, slug, nextProject } = Astro.props;
+---
+
+<BaseLayout title={`${title} — Eduardo Gómez`} description={description} lang={lang} image={heroImage}>
+  <!-- Hero -->
+  <section class="py-24 md:py-32">
+    <div class="max-w-content mx-auto px-6">
+      <div class="mb-12">
+        <p class="font-mono text-sm text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-4 animate-fade-in">
+          {role}
+        </p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-neutral-950 dark:text-neutral-50 mb-6 animate-fade-in-up">
+          {title}
+        </h1>
+        <p class="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed animate-fade-in-up" style="animation-delay: 100ms;">
+          {description}
+        </p>
+      </div>
+
+      <!-- Hero image -->
+      <div class="overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900 aspect-[16/9] animate-fade-in-up" style="animation-delay: 200ms;">
+        <img
+          src={heroImage}
+          alt={title}
+          class="w-full h-full object-cover"
+          transition:name={`project-image-${slug}`}
+        />
+      </div>
+
+      <!-- Metadata -->
+      <div class="mt-12">
+        <MetadataGrid role={role} timeline={timeline} tools={tools} team={team} lang={lang} />
+      </div>
+    </div>
+  </section>
+
+  <!-- MDX Content -->
+  <section class="pb-24 md:pb-32">
+    <div class="max-w-content mx-auto px-6">
+      <div class="prose prose-neutral dark:prose-invert prose-headings:font-display prose-headings:tracking-tight prose-h2:text-2xl prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-relaxed prose-a:text-neutral-900 dark:prose-a:text-neutral-100 prose-img:rounded-lg max-w-none">
+        <slot />
+      </div>
+    </div>
+  </section>
+
+  <!-- Next Project -->
+  {nextProject && (
+    <NextProject
+      title={nextProject.title}
+      slug={nextProject.slug}
+      thumbnail={nextProject.thumbnail}
+      lang={lang}
+    />
+  )}
+</BaseLayout>

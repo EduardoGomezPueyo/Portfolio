@@ -1,0 +1,36 @@
+---
+import type { Lang } from '../i18n/languages';
+import { useTranslations, getLocalizedPath } from '../i18n/utils';
+
+interface Props {
+  title: string;
+  slug: string;
+  thumbnail: string;
+  lang: Lang;
+}
+
+const { title, slug, thumbnail, lang } = Astro.props;
+const t = useTranslations(lang);
+const href = getLocalizedPath(`/work/${slug}`, lang);
+---
+
+<section class="py-24 md:py-32 border-t border-neutral-200 dark:border-neutral-800">
+  <div class="max-w-content mx-auto px-6">
+    <p class="font-mono text-sm text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-6">
+      {t('caseStudy.nextProject')}
+    </p>
+    <a href={href} class="group block">
+      <h3 class="text-3xl md:text-4xl font-display font-bold text-neutral-950 dark:text-neutral-50 mb-8 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors">
+        {title}
+      </h3>
+      <div class="overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900 aspect-[16/10]">
+        <img
+          src={thumbnail}
+          alt={title}
+          class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
+          loading="lazy"
+        />
+      </div>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+---
+import type { Lang } from '../i18n/languages';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="py-24 md:py-32">
+  <div class="max-w-content mx-auto px-6">
+    <div class="max-w-3xl">
+      <p class="font-mono text-sm text-neutral-500 dark:text-neutral-400 mb-4 animate-fade-in">
+        {t('hero.role')}
+      </p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-neutral-950 dark:text-neutral-50 mb-6 animate-fade-in-up">
+        {t('hero.greeting')}
+      </h1>
+      <p class="text-lg md:text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed animate-fade-in-up" style="animation-delay: 100ms;">
+        {t('hero.tagline')}
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+---
+import type { Lang } from '../i18n/languages';
+import { useTranslations, getLocalizedPath } from '../i18n/utils';
+import ThemeToggle from './ThemeToggle.astro';
+import LanguageToggle from './LanguageToggle.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-neutral-50/80 dark:bg-neutral-950/80 border-b border-neutral-200/50 dark:border-neutral-800/50">
+  <div class="max-w-content mx-auto px-6 flex items-center justify-between h-16">
+    <a href={getLocalizedPath('/', lang)} class="font-display text-lg font-bold tracking-tight text-neutral-950 dark:text-neutral-50">
+      EG
+    </a>
+
+    <div class="flex items-center gap-1">
+      <a
+        href={getLocalizedPath('/', lang)}
+        class="px-3 py-2 text-sm text-neutral-700 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-neutral-50 transition-colors"
+      >
+        {t('nav.work')}
+      </a>
+      <a
+        href={getLocalizedPath('/about', lang)}
+        class="px-3 py-2 text-sm text-neutral-700 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-neutral-50 transition-colors"
+      >
+        {t('nav.about')}
+      </a>
+      <div class="w-px h-5 bg-neutral-200 dark:bg-neutral-800 mx-1"></div>
+      <LanguageToggle lang={lang} />
+      <ThemeToggle lang={lang} />
+    </div>
+  </div>
+</nav>

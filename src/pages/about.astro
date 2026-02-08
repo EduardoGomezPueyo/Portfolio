@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ScrollReveal from '../components/ScrollReveal.astro';
+import { useTranslations } from '../i18n/utils';
+
+const lang = 'en';
+const t = useTranslations(lang);
+---
+
+<BaseLayout title={`${t('about.title')} — Eduardo Gómez`} description={t('meta.description')} lang={lang}>
+  <section class="py-24 md:py-32">
+    <div class="max-w-content mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <!-- Photo -->
+        <ScrollReveal>
+          <div class="aspect-video rounded-lg bg-neutral-100 dark:bg-neutral-900 overflow-hidden">
+            <img
+              src="/images/about-picture.jpg"
+              alt="Eduardo Gómez"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        </ScrollReveal>
+
+        <!-- Bio -->
+        <ScrollReveal delay={100}>
+          <div>
+            <h1 class="text-4xl md:text-5xl font-display font-bold tracking-tight text-neutral-900 dark:text-neutral-100 mb-8">
+              {t('about.title')}
+            </h1>
+            <div class="space-y-4 text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              {t('about.bio').split('\n\n').map(p => <p>{p}</p>)}
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="py-24 md:py-32 border-t border-neutral-200 dark:border-neutral-800">
+    <div class="max-w-content mx-auto px-6">
+      <ScrollReveal>
+        <div class="max-w-narrow">
+          <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight text-neutral-900 dark:text-neutral-100 mb-4">
+            {t('about.contact')}
+          </h2>
+          <p class="text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
+            {t('about.contactText')}
+          </p>
+
+          <div class="space-y-6">
+            <div>
+              <p class="font-mono text-xs text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">
+                {t('about.email')}
+              </p>
+              <a href="mailto:eduardogomezpueyo@gmail.com" class="text-neutral-900 dark:text-neutral-100 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors">
+                eduardogomezpueyo@gmail.com
+              </a>
+            </div>
+
+            <div>
+              <p class="font-mono text-xs text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">
+                {t('about.social')}
+              </p>
+              <div class="flex gap-6">
+                <a href="https://www.linkedin.com/in/eduardo-gomez-pueyo/" target="_blank" rel="noopener noreferrer" class="text-neutral-900 dark:text-neutral-100 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors">
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ScrollReveal>
+    </div>
+  </section>
+</BaseLayout>

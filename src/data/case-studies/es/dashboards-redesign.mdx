@@ -1,0 +1,66 @@
+---
+title: "Rediseño de Dashboards"
+description: "Rediseño completo de la sección de análisis de datos de Harmonix, transformando dashboards obsoletos en herramientas útiles a partir de feedback real de clientes y nuevas necesidades de producto."
+thumbnail: "/images/case-studies/dashboards/thumbnail.jpg"
+heroImage: "/images/case-studies/dashboards/hero.jpg"
+role: "Product designer"
+timeline: "6 meses"
+tools: ["Figma"]
+team: "Harmonix"
+order: 2
+lang: "es"
+slug: "dashboards"
+---
+
+import ImageCarousel from '../../../components/ImageCarousel.astro';
+
+## Contexto
+
+**Harmonix** es una herramienta que se establece sobre los lugares habituales de trabajo de los usuarios de CRM — Outlook, Salesforce, Dynamics, LinkedIn — y unifica sus herramientas de comunicación e información. Funciona principalmente a través de una extensión de navegador que se adapta al contenido de cada página web, pero también cuenta con una aplicación web que sirve como centro de control: configuraciones para administradores y personalización para cada usuario (firma, números de teléfono, avatar...).
+
+Dentro de esta aplicación web existe una sección dedicada al análisis de datos — los dashboards.
+
+## El Problema
+
+Los dashboards se crearon en las primeras fases del producto y no habían evolucionado con él. El diseño original seguía un proceso de venta lineal que ningún cliente actual utilizaba realmente, y dividía los datos por etapas de ese proceso en lugar de ofrecer una vista unificada. A esto se sumaba que la extensión había ampliado su funcionalidad con el tiempo — llamadas, agentes de IA, nuevos tipos de actividad — pero los dashboards no reflejaban ninguno de esos datos nuevos.
+
+El resultado era una sección de análisis que mostraba información que nadie pedía y ocultaba la que todos necesitaban.
+
+![Old Dashboards](/images/case-studies/dashboards/old-dashboards.jpg)
+
+## Lo que nos dijeron los clientes
+
+El feedback fue directo: los clientes nos decían que la información que proporcionábamos no les resultaba útil porque no respondía a las preguntas que realmente se hacían. Querían saber cómo rendían sus equipos, qué volumen de comunicación gestionaban, cómo funcionaban los agentes de IA que habían configurado — no ver datos organizados alrededor de un embudo de ventas que no reflejaba su forma de trabajar.
+
+Este feedback dejó claro que el problema no era cosmético. No se trataba de reorganizar gráficos o cambiar colores, sino de replantear desde cero qué datos merecían estar ahí y cómo debían presentarse. Decidimos que, habiendo introducido nuevas funcionalidades en la extensión, este era el momento ideal para reconstruir los dashboards de forma que fueran realmente útiles.
+
+A partir de ahí, mantuvimos conversaciones continuas con clientes mientras avanzábamos en el nuevo diseño, lo que nos permitió definir tres ejes de mejora.
+
+## Soluciones
+
+<ImageCarousel
+  images={[
+    { src: "/images/case-studies/dashboards/pipeline-panel.jpg", alt: "User view on current work pipeline" },
+    { src: "/images/case-studies/dashboards/ai-dashboards.jpg", alt: "Agent dashboards" },
+    { src: "/images/case-studies/dashboards/search-views.jpg", alt: "Search custom views" },
+  ]}
+  caption="Dashboards rediseñados"
+/>
+
+### Separando el contenido por categoría, no por proceso
+
+Cada área de seguimiento — actividades, rendimiento de agentes de IA, monitorización de llamadas — pasó a tener su propio espacio dedicado, conectado con el resto a un clic de distancia. Esta separación por categoría en lugar de por etapa de venta permitió construir vistas especializadas para cada página sin mantener un sistema forzado a convivir en todas y que no funcionaba igual de bien en ninguna.
+
+### Dashboards con criterio en lugar de dashboards a la carta
+
+Tomamos la decisión de que el contenido de los dashboards estuviera curado por el equipo: el usuario no construiría sus propios gráficos. La razón fue práctica — la variabilidad que introducía esa libertad era demasiado grande para mantener en una herramienta que no estaba dedicada a la creación de gráficos. En su lugar, revisamos y seleccionamos las visualizaciones que ofrecían la vista más clara de cada área, asegurándonos de que la experiencia no se sintiera como una limitación sino como una decisión que ahorraba trabajo al usuario. Dicho esto, en algunas de las nuevas pantallas los usuarios pueden ver gráficos en función de sus campos y agentes de IA de forma personalizada.
+
+### Filtros y vistas guardadas
+
+El último eje fue proporcionar herramientas para que los usuarios pudieran llegar a los datos que les importaban. Esto pasó por ofrecer filtros de equipos, personas y campos, y también formas de agrupar la información dentro de los gráficos. ¿Llamadas por equipo? Se puede. ¿Emails en función de si están respondidos o no? También. La pieza final fue un sistema de vistas donde cada configuración de filtros se puede guardar para volver a ella, soportando filtros dinámicos como los de fecha.
+
+## Reflexiones finales
+
+La tensión más interesante de este proyecto fue encontrar el equilibrio entre personalización y escalabilidad. Los clientes querían ver sus datos a su manera, pero construir una herramienta completamente abierta habría sido inmantenible y habría generado experiencias inconsistentes. La solución — dashboards curados con filtros potentes y vistas guardadas — fue un compromiso que funcionó porque escuchamos lo que los clientes realmente necesitaban sin perder de vista que el producto tenía que escalar más allá de un cliente particular.
+
+Este proyecto también me enseñó el valor de mantener a los clientes cerca durante todo el proceso de diseño, no solo al principio. Las conversaciones continuas mientras diseñábamos nos permitieron validar decisiones antes de que fueran costosas de revertir, y cuando los primeros usuarios vieron el resultado, la respuesta confirmó que el camino había sido el correcto.

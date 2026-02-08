@@ -1,0 +1,23 @@
+---
+import type { Lang } from '../i18n/languages';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-neutral-200 dark:border-neutral-800 py-12">
+  <div class="max-w-content mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-neutral-500 dark:text-neutral-400">
+    <p>&copy; {year} Eduardo Gómez. {t('footer.rights')}</p>
+    <div class="flex items-center gap-6">
+      <a href="https://www.linkedin.com/in/eduardo-gomez-pueyo/" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</footer>
