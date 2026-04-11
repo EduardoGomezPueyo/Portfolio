@@ -1,0 +1,60 @@
+---
+title: "AI Agents"
+description: "El diseño de un sistema de agentes de IA configurables 
+para Harmonix — traduciendo una funcionalidad técnicamente compleja 
+en una herramienta que cualquier comercial pudiera configurar, 
+ejecutar y aprovechar sin salir de su flujo de trabajo."
+thumbnail: "/images/case-studies/agents/thumbnail.jpg"
+heroImage: "/images/case-studies/agents/hero.jpg"
+role: "Product designer"
+timeline: "1 año"
+tools: ["Figma"]
+team: "Harmonix"
+order: 2
+lang: "es"
+slug: "agents"
+---
+
+## Contexto
+
+**Harmonix** es una herramienta que se establece sobre los lugares habituales de trabajo de los usuarios de CRM — Outlook, Salesforce, Dynamics, LinkedIn — y unifica sus herramientas de comunicación e información. Funciona principalmente a través de una extensión de navegador que se adapta al contenido de cada página web, pero también cuenta con una aplicación web que sirve como centro de control: configuraciones para administradores y personalización para cada usuario (firma, números de teléfono, avatar...).
+
+
+## La situación
+
+Los comerciales pasan una parte significativa de su día en llamadas y reuniones. Después de una conversación de una hora con un cliente, el trabajo no termina ahí: alguien tiene que revisar la grabación, extraer lo que se ha discutido, identificar los siguientes pasos, detectar qué está fallando en la relación y registrar todo eso en algún lugar útil. O dedicas tiempo después de la llamada a hacerlo manualmente, o tomas notas mientras la conversación ocurre — lo que significa que no estás del todo presente en ella.
+
+La pregunta era si ese trabajo de análisis podía ocurrir de forma automática, usando la transcripción a la que Harmonix ya tenía acceso.
+
+## El reto
+
+La respuesta era sí — pero solo si conseguíamos hacer la configuración accesible. El mecanismo subyacente era genuinamente técnico: agentes que leen una transcripción, extraen información específica a partir de un prompt estructurado, inyectan variables del CRM y devuelven un resultado en un formato definido. Algunos agentes también dependían de otros, esperando el output de un agente previo antes de ejecutarse.
+
+Exponer todo eso a un usuario no técnico — un comercial que simplemente quería saber si un cliente estaba en riesgo — era el problema de diseño central. El sistema de variables en particular fue lo que más iteraciones requirió: cómo mostrar qué variables estaban disponibles, cómo permitir que los usuarios las insertaran en un prompt sin escribir código, y cómo comunicar lo que ocurriría en tiempo de ejecución sin saturar la pantalla de configuración.
+
+## Soluciones
+
+### Una taxonomía estructurada de agentes
+![Taxonomía de agentes](/images/case-studies/agents/taxonomy.jpg)
+Los agentes se organizaron según lo que hacen — Decisión, Generación, Asignación, Creación de tareas, Seguimiento de actividades — y según sobre qué operan: llamadas, reuniones, emails, empresas, leads y oportunidades. Esta clasificación no era solo organizativa; determinaba qué opciones aparecían en cada paso de la configuración, reduciendo la superficie de decisión para usuarios que simplemente necesitaban que algo funcionara.
+
+### Hacer las variables utilizables
+![Sistema de variables](/images/case-studies/agents/variables.jpg)
+La parte más difícil de configurar un agente es indicarle qué información debe usar. Las variables extraen datos en tiempo real del CRM — datos de contacto, historial de interacciones previas, canales utilizados — y los inyectan en el prompt durante la ejecución. El reto de diseño era conseguir que esto se sintiera como rellenar un formulario, no como escribir un script. La interfaz final mostraba las variables disponibles de forma contextual según el tipo de agente y el objeto sobre el que operaba, con una vista previa clara de cómo quedaría el prompt una vez completado.
+
+### Agentes que trabajan juntos
+![Sistema de filtros](/images/case-studies/agents/filters.jpg)
+Los casos de uso más avanzados requerían agentes que dependieran unos de otros — un agente esperando el output de otro antes de ejecutarse. Diseñamos este sistema de dependencias para que fuera explícito sin resultar intimidante: los usuarios podían ver qué agentes alimentaban a cuáles y configurar el orden de ejecución sin necesidad de entender el pipeline técnico que había detrás.
+
+### Probar antes de activar
+![Laboratorio de pruebas](/images/case-studies/agents/testing.jpg)
+Antes de activar un agente, los usuarios podían probarlo con actividades reales pasadas en el Lab — un entorno sandbox donde los resultados se generaban pero nunca se mostraban al resto del producto. Esto permitía validar que un agente hacía lo que se esperaba sin ningún riesgo, y redujo el ciclo de configuración y soporte que había sido habitual en las versiones internas anteriores.
+
+### Cerrando el ciclo en la extensión
+![Pantallas de extensión](/images/case-studies/agents/extension.jpg)
+La configuración de los agentes ocurre en la aplicación web, pero el valor aterriza en la extensión — el lugar donde los comerciales trabajan realmente. Los resultados de los agentes aparecen directamente en la vista de detalle del contacto, junto al historial de actividad, la grabación de la llamada y las herramientas de comunicación. El resultado es que cuando termina una llamada, el comercial abre la extensión y el análisis ya está ahí: un resumen, una decisión sobre el estado de la cuenta, los siguientes pasos, o lo que sea que los agentes configurados produzcan. El trabajo de revisar la llamada ya está hecho.
+
+## Reflexión
+Este proyecto comenzó como una herramienta interna para administradores y fue ampliándose, a lo largo de un año, hasta convertirse en una funcionalidad que cualquier usuario de la plataforma podía configurar y ejecutar. Esa progresión fue intencionada — empezar con una audiencia más controlada nos permitió aprender qué necesitaba gestionar la experiencia de configuración antes de exponerla de forma más amplia.
+
+La tensión más constante fue entre potencia y accesibilidad. El sistema de agentes podía hacer mucho, pero cada nueva capacidad traía más cosas que explicar. Las decisiones que mejor aguantaron fueron las que reducían lo que los usuarios tenían que pensar en cada momento — no ocultando la complejidad, sino mostrándola solo cuando era realmente relevante.
