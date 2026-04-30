@@ -9,7 +9,7 @@ const lang = 'en';
 const t = useTranslations(lang);
 
 const caseStudies = (await getCollection('case-studies'))
-  .filter((study) => study.data.lang === lang)
+  .filter((study) => study.data.lang === lang && study.data.published === !false)
   .sort((a, b) => a.data.order - b.data.order);
 ---
 

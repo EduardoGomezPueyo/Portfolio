@@ -22,6 +22,7 @@ const caseStudies = defineCollection({
     order: z.number(),
     lang: z.enum(['en', 'es']),
     slug: z.string(),
+    published: z.boolean().optional(),
   }),
 });
 
