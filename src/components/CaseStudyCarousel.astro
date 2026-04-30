@@ -1,0 +1,405 @@
+---
+import type { Lang } from '../i18n/languages';
+import { useTranslations, getLocalizedPath } from '../i18n/utils';
+import ScrollReveal from './ScrollReveal.astro';
+
+interface CaseStudy {
+  title: string;
+  description: string;
+  thumbnail: string;
+  slug: string;
+  role: string;
+}
+
+interface Props {
+  studies: CaseStudy[];
+  lang: Lang;
+}
+
+const { studies, lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<ScrollReveal>
+  <section class="case-study-carousel pb-20 md:pb-28 max-w-content mx-auto px-6" id="case-study-carousel">
+    <div class="carousel-header">
+      <h2 class="font-mono text-sm text-neutral-500 dark:text-neutral-400 uppercase tracking-wider text-left">
+        {t('home.selectedWork')}
+      </h2>
+    </div>
+
+    <div class="carousel-viewport" data-cs-viewport>
+      <div class="carousel-track" data-cs-carousel-track>
+        {studies.map((study, index) => {
+          const href = getLocalizedPath(`/work/${study.slug}`, lang);
+          return (
+            <a
+              href={href}
+              class="carousel-card group"
+              data-card-index={index}
+            >
+              <div class="carousel-card__image">
+                <img
+                  src={study.thumbnail}
+                  alt={study.title}
+                  class="w-full h-full object-cover group-hover:scale-[1.015] transition-transform duration-500"
+                  loading="lazy"
+                  draggable="false"
+                />
+              </div>
+              <div class="carousel-card__content">
+                <h3 class="carousel-card__title font-display font-bold text-neutral-950 dark:text-neutral-50">
+                  {study.title}
+                </h3>
+                <span class="carousel-card__cta">
+                  {t('home.viewProject')}
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+
+    <!-- Dot navigation -->
+    <div class="carousel-dots" data-cs-dots>
+      {studies.map((_, index) => (
+        <button
+          type="button"
+          class:list={['carousel-dot', index === 0 && 'is-active']}
+          data-cs-dot={index}
+          aria-label={`Go to project ${index + 1}`}
+        />
+      ))}
+    </div>
+  </section>
+</ScrollReveal>
+
+<style>
+  /* --- Section: always centered --- */
+  .case-study-carousel {
+    max-width: var(--spacing-content);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (max-width: 639px) {
+    .case-study-carousel {
+      max-width: 100%;
+    }
+  }
+
+  .carousel-header {
+    margin-bottom: 2rem;
+  }
+
+  /* --- Viewport: overflow hidden, no user scrolling --- */
+  .carousel-viewport {
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* --- Track: flex row, positioned via JS transform --- */
+  .carousel-track {
+    display: flex;
+    gap: 1rem;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+
+  /* --- Cards --- */
+  .carousel-card {
+    flex: 0 0 auto;
+    width: 66%;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: var(--color-neutral-100);
+    text-decoration: none;
+    display: block;
+    user-select: none;
+    transition: opacity 0.35s ease, filter 0.35s ease, box-shadow 0.3s ease;
+  }
+
+  :global(.dark) .carousel-card {
+    background: var(--color-neutral-900);
+  }
+
+  /* --- Hover dimming: when hovering the viewport, dim all cards, un-dim the hovered one --- */
+  .carousel-viewport:hover .carousel-card {
+    opacity: 0.4;
+    filter: brightness(0.7);
+  }
+
+  .carousel-viewport:hover .carousel-card:hover {
+    opacity: 1;
+    filter: brightness(1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  :global(.dark) .carousel-viewport:hover .carousel-card {
+    filter: brightness(0.45);
+  }
+
+  :global(.dark) .carousel-viewport:hover .carousel-card:hover {
+    filter: brightness(1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .carousel-card__image {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--color-neutral-200);
+  }
+
+  :global(.dark) .carousel-card__image {
+    background: var(--color-neutral-800);
+  }
+
+  /* --- Card content: title + CTA --- */
+  .carousel-card__content {
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .carousel-card__title {
+    font-size: 1rem;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  @media (min-width: 640px) {
+    .carousel-card__title {
+      font-size: 1.125rem;
+    }
+  }
+
+  /* --- View Project CTA --- */
+  .carousel-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 0.375rem 0.75rem;
+    border-radius: 10px;
+    color: var(--color-neutral-700);
+    background: transparent;
+    border: 1px solid var(--color-neutral-200);
+    transition: all 0.2s ease;
+  }
+
+  :global(.dark) .carousel-card__cta {
+    color: var(--color-neutral-300);
+    border-color: var(--color-neutral-700);
+  }
+
+  .carousel-card:hover .carousel-card__cta {
+    background: var(--color-neutral-200);
+    color: var(--color-neutral-800);
+    border-color: var(--color-neutral-300);
+  }
+
+  :global(.dark) .carousel-card:hover .carousel-card__cta {
+    background: var(--color-neutral-800);
+    color: var(--color-neutral-200);
+    border-color: var(--color-neutral-600);
+  }
+
+  /* --- Dot navigation --- */
+  .carousel-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    margin-top: 1.5rem;
+  }
+
+  .carousel-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background: var(--color-neutral-300);
+    transition: all 0.3s ease;
+    outline: none;
+  }
+
+  :global(.dark) .carousel-dot {
+    background: var(--color-neutral-700);
+  }
+
+  .carousel-dot:hover {
+    background: var(--color-neutral-500);
+    transform: scale(1.3);
+  }
+
+  .carousel-dot.is-active {
+    background: var(--color-neutral-900);
+    width: 22px;
+    border-radius: 9999px;
+  }
+
+  :global(.dark) .carousel-dot.is-active {
+    background: var(--color-neutral-100);
+  }
+
+  /* --- Responsive card sizing --- */
+  @media (max-width: 639px) {
+    .carousel-card {
+      width: 80%;
+    }
+  }
+</style>
+
+<script>
+  function initCaseStudyCarousel() {
+    const viewport = document.querySelector<HTMLElement>('[data-cs-viewport]');
+    const track = document.querySelector<HTMLElement>('[data-cs-carousel-track]');
+    const dots = document.querySelectorAll<HTMLButtonElement>('[data-cs-dot]');
+    const cards = track?.querySelectorAll<HTMLElement>('.carousel-card');
+
+    if (!viewport || !track || !cards || cards.length === 0) return;
+    if (track.dataset.csInit) return;
+    track.dataset.csInit = 'true';
+
+    let currentIndex = 0;
+    let autoplayTimer: ReturnType<typeof setInterval> | null = null;
+    const AUTOPLAY_INTERVAL = 5000;
+
+    function getCardWidth(): number {
+      return cards![0].offsetWidth;
+    }
+
+    function getGap(): number {
+      const style = window.getComputedStyle(track!);
+      return parseFloat(style.gap) || 16;
+    }
+
+    function goTo(index: number) {
+      const total = cards!.length;
+      currentIndex = Math.max(0, Math.min(index, total - 1));
+
+      const cardW = getCardWidth();
+      const gap = getGap();
+      const viewportW = viewport!.clientWidth;
+
+      // Center the active card: offset = index * (cardW + gap) - (viewportW - cardW) / 2
+      const centerOffset = (viewportW - cardW) / 2;
+      const targetOffset = currentIndex * (cardW + gap) - centerOffset;
+
+      // Clamp so we don't scroll past edges
+      const maxOffset = track!.scrollWidth - viewportW;
+      const clampedOffset = Math.max(0, Math.min(targetOffset, maxOffset));
+
+      track!.style.transform = `translateX(-${clampedOffset}px)`;
+
+      // Update dots
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === currentIndex);
+      });
+    }
+
+    // --- Dot clicks ---
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        goTo(Number(dot.dataset.csDot));
+      });
+    });
+
+    // --- Keyboard nav on viewport ---
+    viewport.setAttribute('tabindex', '0');
+    viewport.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        goTo(currentIndex - 1);
+      }
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        goTo(currentIndex + 1);
+      }
+    });
+
+    // --- Touch swipe support ---
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let isSwiping = false;
+
+    viewport.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      isSwiping = false;
+    }, { passive: true });
+
+    viewport.addEventListener('touchmove', (e) => {
+      const deltaX = e.touches[0].clientX - touchStartX;
+      const deltaY = e.touches[0].clientY - touchStartY;
+      // Only swipe if horizontal movement is dominant
+      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 15) {
+        isSwiping = true;
+      }
+    }, { passive: true });
+
+    viewport.addEventListener('touchend', (e) => {
+      if (!isSwiping) return;
+      const deltaX = e.changedTouches[0].clientX - touchStartX;
+      if (deltaX > 40) {
+        goTo(currentIndex - 1);
+      } else if (deltaX < -40) {
+        goTo(currentIndex + 1);
+      }
+    });
+
+    // --- Prevent click when swiping ---
+    viewport.addEventListener('click', (e) => {
+      if (isSwiping) {
+        e.preventDefault();
+        isSwiping = false;
+      }
+    }, true);
+
+    // --- Autoplay ---
+    function startAutoplay() {
+      stopAutoplay();
+      autoplayTimer = setInterval(() => {
+        const next = (currentIndex + 1) % cards!.length;
+        goTo(next);
+      }, AUTOPLAY_INTERVAL);
+    }
+
+    function stopAutoplay() {
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    }
+
+    // Pause on hover / focus
+    viewport.addEventListener('mouseenter', stopAutoplay);
+    viewport.addEventListener('mouseleave', startAutoplay);
+    viewport.addEventListener('focusin', stopAutoplay);
+    viewport.addEventListener('focusout', startAutoplay);
+
+    // --- Recalculate on resize ---
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => goTo(currentIndex), 100);
+    });
+
+    // --- Init ---
+    goTo(0);
+    startAutoplay();
+  }
+
+  document.addEventListener('astro:page-load', initCaseStudyCarousel);
+  initCaseStudyCarousel();
+</script>

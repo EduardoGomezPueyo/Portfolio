@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
-import CaseStudyCard from '../../components/CaseStudyCard.astro';
+import CaseStudyCarousel from '../../components/CaseStudyCarousel.astro';
+import NotableWork from '../../components/NotableWork.astro';
 import { useTranslations } from '../../i18n/utils';
 import { getCollection } from 'astro:content';
 
@@ -11,28 +12,20 @@ const t = useTranslations(lang);
 const caseStudies = (await getCollection('case-studies'))
   .filter((study) => study.data.lang === lang && study.data.published === !false)
   .sort((a, b) => a.data.order - b.data.order);
+
+const carouselStudies = caseStudies.map((study) => ({
+  title: study.data.title,
+  description: study.data.description,
+  thumbnail: study.data.thumbnail,
+  slug: study.data.slug,
+  role: study.data.role,
+}));
 ---
 
 <BaseLayout title={t('meta.title')} description={t('meta.description')} lang={lang}>
   <Hero lang={lang} />
 
-  <section class="pb-24 md:pb-32">
-    <div class="max-w-content mx-auto px-6 mb-12">
-      <h2 class="font-mono text-sm text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
-        {t('home.selectedWork')}
-      </h2>
-    </div>
+  <CaseStudyCarousel studies={carouselStudies} lang={lang} />
 
-    {caseStudies.map((study, index) => (
-      <CaseStudyCard
-        title={study.data.title}
-        description={study.data.description}
-        thumbnail={study.data.thumbnail}
-        slug={study.data.slug}
-        role={study.data.role}
-        lang={lang}
-        index={index}
-      />
-    ))}
-  </section>
+  <NotableWork lang={lang} />
 </BaseLayout>

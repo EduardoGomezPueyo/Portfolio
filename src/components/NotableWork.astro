@@ -1,0 +1,150 @@
+---
+import type { Lang } from '../i18n/languages';
+import { useTranslations } from '../i18n/utils';
+import ScrollReveal from './ScrollReveal.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<ScrollReveal>
+  <section class="notable-work py-20 md:py-28" id="notable-work">
+    <div class="max-w-content mx-auto px-6">
+      <div class="notable-work__header mb-12">
+        <h2 class="font-mono text-sm text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-6">
+          {t('home.notableWork')}
+        </h2>
+        <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed">
+          {t('home.notableWorkDescription')}
+        </p>
+      </div>
+
+      <!-- Placeholder grid -->
+      <div class="notable-work__grid">
+        {[1, 2, 3, 4].map((i) => (
+          <div class="notable-work__placeholder" style={`--delay: ${i * 80}ms`}>
+            <div class="placeholder-shimmer"></div>
+            <div class="placeholder-content">
+              <div class="placeholder-line placeholder-line--short"></div>
+              <div class="placeholder-line placeholder-line--long"></div>
+              <div class="placeholder-line placeholder-line--medium"></div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-sm text-neutral-400 dark:text-neutral-600 text-center mt-10 font-mono">
+        {t('home.comingSoon')}
+      </p>
+    </div>
+  </section>
+</ScrollReveal>
+
+<style>
+  .notable-work__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 639px) {
+    .notable-work__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .notable-work__placeholder {
+    border-radius: 0.75rem;
+    border: 1px dashed var(--color-neutral-200);
+    background: var(--color-neutral-50);
+    overflow: hidden;
+    animation: placeholder-fade-in 0.5s ease-out both;
+    animation-delay: var(--delay);
+  }
+
+  :global(.dark) .notable-work__placeholder {
+    border-color: var(--color-neutral-800);
+    background: var(--color-neutral-950);
+  }
+
+  .placeholder-shimmer {
+    height: 140px;
+    background: linear-gradient(
+      110deg,
+      var(--color-neutral-100) 30%,
+      var(--color-neutral-50) 50%,
+      var(--color-neutral-100) 70%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2.5s ease-in-out infinite;
+  }
+
+  :global(.dark) .placeholder-shimmer {
+    background: linear-gradient(
+      110deg,
+      var(--color-neutral-900) 30%,
+      var(--color-neutral-800) 50%,
+      var(--color-neutral-900) 70%
+    );
+    background-size: 200% 100%;
+  }
+
+  .placeholder-content {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .placeholder-line {
+    height: 0.625rem;
+    border-radius: 9999px;
+    background: var(--color-neutral-100);
+  }
+
+  :global(.dark) .placeholder-line {
+    background: var(--color-neutral-800);
+  }
+
+  .placeholder-line--short {
+    width: 30%;
+  }
+
+  .placeholder-line--long {
+    width: 85%;
+  }
+
+  .placeholder-line--medium {
+    width: 55%;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  @keyframes placeholder-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.75rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .placeholder-shimmer {
+      animation: none;
+    }
+    .notable-work__placeholder {
+      animation: none;
+      opacity: 1;
+    }
+  }
+</style>
