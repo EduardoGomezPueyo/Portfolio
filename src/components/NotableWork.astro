@@ -9,142 +9,123 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+
+// INSTRUCCIONES:
+// Aquí puedes añadir los nombres de tus 16 imágenes. 
+// Para ordenarlas, simplemente cambia el orden de las líneas en estas listas.
+// Asegúrate de que las imágenes estén en la carpeta 'public/images/'
+
+const lightImages = [
+  'agent-prompt-editor-light.jpg',
+  'email-editor-light.jpg',
+  'dashboard-view-creator-light.jpg',
+  'form-components-light.jpg',
+  'calendar-modal-light.jpg',
+  'intensity-of-activity-light.jpg',
+  'calendar-options-light.jpg',
+  'hover-details-light.jpg',
+  'notifications-light.jpg',
+  'heatmap-chart-light.jpg',
+  'date-selector-light.jpg',
+  'notetaker-log-light.jpg',
+  'select-component-light.jpg',
+  'transfer-call-light.jpg',
+  'button-component-light.jpg',
+  'color-palette-light.jpg',
+];
+
+const darkImages = [
+  'agent-prompt-editor-dark.jpg',
+  'email-editor-dark.jpg',
+  'dashboard-view-creator-dark.jpg',
+  'form-components-dark.jpg',
+  'calendar-modal-dark.jpg',
+  'intensity-of-activity-dark.jpg',
+  'calendar-options-dark.jpg',
+  'hover-details-dark.jpg',
+  'notifications-dark.jpg',
+  'heatmap-chart-dark.jpg',
+  'date-selector-dark.jpg',
+  'notetaker-log-dark.jpg',
+  'select-component-dark.jpg',
+  'transfer-call-dark.jpg',
+  'button-component-dark.jpg',
+  'color-palette-dark.jpg',
+];
 ---
 
 <ScrollReveal>
-  <section class="notable-work py-20 md:py-28" id="notable-work">
-    <div class="max-w-content mx-auto px-6">
-      <div class="notable-work__header mb-12">
-        <h2 class="font-mono text-sm text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-6">
-          {t('home.notableWork')}
-        </h2>
-        <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed">
-          {t('home.notableWorkDescription')}
-        </p>
-      </div>
+  <section class="work-section py-20 md:py-28 max-w-content mx-auto px-6 bg-neutral-50 dark:bg-neutral-950" id="work">
+    <div class="work-section__header mb-12">
+      <h2 class="font-mono text-sm text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
+        {t('home.notableWork')}
+      </h2>
+    </div>
 
-      <!-- Placeholder grid -->
-      <div class="notable-work__grid">
-        {[1, 2, 3, 4].map((i) => (
-          <div class="notable-work__placeholder" style={`--delay: ${i * 80}ms`}>
-            <div class="placeholder-shimmer"></div>
-            <div class="placeholder-content">
-              <div class="placeholder-line placeholder-line--short"></div>
-              <div class="placeholder-line placeholder-line--long"></div>
-              <div class="placeholder-line placeholder-line--medium"></div>
-            </div>
-          </div>
+    <div class="work-section__gallery">
+      <!-- Contenedor Modo Claro -->
+      <div class="work-gallery work-gallery--light">
+        {lightImages.map((img) => (
+          <img src={`/images/work-images/${img}`} alt="Work" class="work-image" loading="lazy" />
         ))}
       </div>
 
-      <p class="text-sm text-neutral-400 dark:text-neutral-600 text-center mt-10 font-mono">
-        {t('home.comingSoon')}
-      </p>
+      <!-- Contenedor Modo Oscuro -->
+      <div class="work-gallery work-gallery--dark">
+        {darkImages.map((img) => (
+          <img src={`/images/work-images/${img}`} alt="Work" class="work-image" loading="lazy" />
+        ))}
+      </div>
     </div>
   </section>
 </ScrollReveal>
 
 <style>
-  .notable-work__grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
+  .work-section {
+    width: 100%;
+    overflow: hidden;
+    /* Ensure the section takes the background color from Tailwind classes */
   }
 
   @media (max-width: 639px) {
-    .notable-work__grid {
-      grid-template-columns: 1fr;
+    .work-section {
+      max-width: 100%;
     }
   }
 
-  .notable-work__placeholder {
-    border-radius: 0.75rem;
-    border: 1px dashed var(--color-neutral-200);
-    background: var(--color-neutral-50);
-    overflow: hidden;
-    animation: placeholder-fade-in 0.5s ease-out both;
-    animation-delay: var(--delay);
-  }
-
-  :global(.dark) .notable-work__placeholder {
-    border-color: var(--color-neutral-800);
-    background: var(--color-neutral-950);
-  }
-
-  .placeholder-shimmer {
-    height: 140px;
-    background: linear-gradient(
-      110deg,
-      var(--color-neutral-100) 30%,
-      var(--color-neutral-50) 50%,
-      var(--color-neutral-100) 70%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 2.5s ease-in-out infinite;
-  }
-
-  :global(.dark) .placeholder-shimmer {
-    background: linear-gradient(
-      110deg,
-      var(--color-neutral-900) 30%,
-      var(--color-neutral-800) 50%,
-      var(--color-neutral-900) 70%
-    );
-    background-size: 200% 100%;
-  }
-
-  .placeholder-content {
-    padding: 1.25rem;
+  .work-gallery {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1.5rem; 
   }
 
-  .placeholder-line {
-    height: 0.625rem;
-    border-radius: 9999px;
-    background: var(--color-neutral-100);
+  .work-image {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 0.75rem;
   }
 
-  :global(.dark) .placeholder-line {
-    background: var(--color-neutral-800);
-  }
-
-  .placeholder-line--short {
-    width: 30%;
-  }
-
-  .placeholder-line--long {
-    width: 85%;
-  }
-
-  .placeholder-line--medium {
-    width: 55%;
-  }
-
-  @keyframes shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-  }
-
-  @keyframes placeholder-fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(0.75rem);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+  @media (max-width: 639px) {
+    .work-image {
+      width: 100%;
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .placeholder-shimmer {
-      animation: none;
-    }
-    .notable-work__placeholder {
-      animation: none;
-      opacity: 1;
-    }
+  /* Lógica de cambio de tema */
+  .work-gallery--dark {
+    display: none;
+  }
+
+  :global(.dark) .work-gallery--light {
+    display: none;
+  }
+
+  :global(.dark) .work-gallery--dark {
+    display: flex;
   }
 </style>
