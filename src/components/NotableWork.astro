@@ -65,15 +65,15 @@ const darkImages = [
     <div class="work-section__gallery">
       <!-- Contenedor Modo Claro -->
       <div class="work-gallery work-gallery--light">
-        {lightImages.map((img) => (
-          <img src={`/images/work-images/${img}`} alt="Work" class="work-image" loading="lazy" />
+        {lightImages.map((img, index) => (
+          <img src={`/images/work-images/${img}`} alt="Work" class="work-image" loading={index < 3 ? "eager" : "lazy"} />
         ))}
       </div>
 
       <!-- Contenedor Modo Oscuro -->
       <div class="work-gallery work-gallery--dark">
-        {darkImages.map((img) => (
-          <img src={`/images/work-images/${img}`} alt="Work" class="work-image" loading="lazy" />
+        {darkImages.map((img, index) => (
+          <img src={`/images/work-images/${img}`} alt="Work" class="work-image" loading={index < 3 ? "eager" : "lazy"} />
         ))}
       </div>
     </div>
