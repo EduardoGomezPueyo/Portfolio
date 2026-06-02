@@ -13,7 +13,7 @@ const t = useTranslations(lang);
       <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
         <!-- Photo -->
         <ScrollReveal>
-          <div class="aspect-video rounded-lg bg-neutral-100 dark:bg-neutral-900 overflow-hidden">
+          <div class="aspect-video rounded-lg bg-neutral-100 overflow-hidden">
             <img
               src="/images/about-picture.jpg"
               alt="Eduardo Gómez"
@@ -26,10 +26,10 @@ const t = useTranslations(lang);
         <!-- Bio -->
         <ScrollReveal delay={100}>
           <div>
-            <h1 class="text-4xl md:text-5xl font-display font-bold tracking-tight text-neutral-900 dark:text-neutral-100 mb-8">
+            <h1 class="text-4xl md:text-5xl font-display font-bold tracking-tight text-neutral-900 mb-8">
               {t('about.title')}
             </h1>
-            <div class="space-y-4 text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <div class="space-y-4 text-neutral-600 leading-relaxed">
               {t('about.bio').split('\n\n').map(p => <p>{p}</p>)}
             </div>
           </div>
@@ -39,33 +39,33 @@ const t = useTranslations(lang);
   </section>
 
   <!-- Contact -->
-  <section class="py-24 md:py-32 border-t border-neutral-200 dark:border-neutral-800">
+  <section class="py-24 md:py-32 border-t border-neutral-200">
     <div class="max-w-content mx-auto px-6">
       <ScrollReveal>
         <div class="max-w-narrow">
-          <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight text-neutral-900 dark:text-neutral-100 mb-4">
+          <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight text-neutral-900 mb-4">
             {t('about.contact')}
           </h2>
-          <p class="text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
+          <p class="text-neutral-600 mb-8 leading-relaxed">
             {t('about.contactText')}
           </p>
 
           <div class="space-y-6">
             <div>
-              <p class="font-mono text-xs text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">
+              <p class="font-mono text-xs text-neutral-500 uppercase tracking-wider mb-2">
                 {t('about.email')}
               </p>
-              <a href="mailto:eduardogomezpueyo@gmail.com" class="text-neutral-900 dark:text-neutral-100 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors">
+              <a href="mailto:eduardogomezpueyo@gmail.com" class="text-neutral-900 hover:text-neutral-600 transition-colors">
                 eduardogomezpueyo@gmail.com
               </a>
             </div>
 
             <div>
-              <p class="font-mono text-xs text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">
+              <p class="font-mono text-xs text-neutral-500 uppercase tracking-wider mb-2">
                 {t('about.social')}
               </p>
               <div class="flex gap-6">
-                <a href="https://www.linkedin.com/in/eduardo-gomez-pueyo/" target="_blank" rel="noopener noreferrer" class="text-neutral-900 dark:text-neutral-100 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors">
+                <a href="https://www.linkedin.com/in/eduardo-gomez-pueyo/" target="_blank" rel="noopener noreferrer" class="text-neutral-900 hover:text-neutral-600 transition-colors">
                   LinkedIn
                 </a>
               </div>

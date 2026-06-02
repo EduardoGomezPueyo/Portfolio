@@ -29,19 +29,19 @@ const { title, description, heroImage, role, timeline, tools, team, lang, slug, 
   <section class="py-24 md:py-32">
     <div class="max-w-content mx-auto px-6">
       <div class="mb-12">
-        <p class="font-mono text-sm text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-4 animate-fade-in">
+        <p class="font-mono text-sm text-neutral-500 uppercase tracking-wider mb-4 animate-fade-in">
           {role}
         </p>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-neutral-950 dark:text-neutral-50 mb-6 animate-fade-in-up">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-neutral-950 mb-6 animate-fade-in-up">
           {title}
         </h1>
-        <p class="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed animate-fade-in-up" style="animation-delay: 100ms;">
+        <p class="text-lg text-neutral-700 leading-relaxed animate-fade-in-up" style="animation-delay: 100ms;">
           {description}
         </p>
       </div>
 
       <!-- Hero image -->
-      <div class="overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900 aspect-[16/9] animate-fade-in-up" style="animation-delay: 200ms;">
+      <div class="overflow-hidden rounded-lg bg-neutral-100 aspect-[16/9] animate-fade-in-up" style="animation-delay: 200ms;">
         <img
           src={heroImage}
           alt={title}
@@ -60,7 +60,7 @@ const { title, description, heroImage, role, timeline, tools, team, lang, slug, 
   <!-- MDX Content -->
   <section class="pb-24 md:pb-32">
     <div class="max-w-content mx-auto px-6">
-      <div class="prose prose-neutral dark:prose-invert prose-headings:font-display prose-headings:tracking-tight prose-h2:text-2xl prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-relaxed prose-a:text-neutral-900 dark:prose-a:text-neutral-100 prose-img:rounded-lg max-w-none">
+      <div class="prose prose-neutral prose-headings:font-display prose-headings:tracking-tight prose-h2:text-2xl prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-relaxed prose-a:text-neutral-900 prose-img:rounded-lg max-w-none">
         <slot />
       </div>
     </div>

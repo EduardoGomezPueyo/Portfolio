@@ -21,27 +21,12 @@ const { title, description, lang, image } = Astro.props;
   <head>
     <SEOHead title={title} description={description} lang={lang} image={image} />
     <ClientRouter />
-    <!-- Dark mode: prevent flash -->
-    <script is:inline>
-      (function() {
-        function applyTheme() {
-          const theme = localStorage.getItem('theme');
-          if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-          } else {
-            document.documentElement.classList.remove('dark');
-          }
-        }
-        applyTheme();
-        document.addEventListener('astro:after-swap', applyTheme);
-      })();
-    </script>
   </head>
   <body class="min-h-screen flex flex-col">
-    <Nav lang={lang} />
+    <Nav />
     <main class="flex-1 pt-16">
       <slot />
     </main>
-    <Footer lang={lang} />
+    <Footer />
   </body>
 </html>

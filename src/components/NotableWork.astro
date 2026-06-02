@@ -1,7 +1,6 @@
 ---
-import type { Lang } from '../i18n/languages';
-import { useTranslations } from '../i18n/utils';
-import ScrollReveal from './ScrollReveal.astro';
+import type { Lang } from "../i18n/languages";
+import { useTranslations, getLocalizedPath } from "../i18n/utils";
 
 interface Props {
   lang: Lang;
@@ -11,121 +10,131 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 // INSTRUCCIONES:
-// Aquí puedes añadir los nombres de tus 16 imágenes. 
-// Para ordenarlas, simplemente cambia el orden de las líneas en estas listas.
-// Asegúrate de que las imágenes estén en la carpeta 'public/images/'
-
-const lightImages = [
-  'agent-prompt-editor-light.jpg',
-  'email-editor-light.jpg',
-  'dashboard-view-creator-light.jpg',
-  'form-components-light.jpg',
-  'calendar-modal-light.jpg',
-  'intensity-of-activity-light.jpg',
-  'calendar-options-light.jpg',
-  'hover-details-light.jpg',
-  'notifications-light.jpg',
-  'heatmap-chart-light.jpg',
-  'date-selector-light.jpg',
-  'notetaker-log-light.jpg',
-  'select-component-light.jpg',
-  'transfer-call-light.jpg',
-  'button-component-light.jpg',
-  'color-palette-light.jpg',
-];
-
-const darkImages = [
-  'agent-prompt-editor-dark.jpg',
-  'email-editor-dark.jpg',
-  'dashboard-view-creator-dark.jpg',
-  'form-components-dark.jpg',
-  'calendar-modal-dark.jpg',
-  'intensity-of-activity-dark.jpg',
-  'calendar-options-dark.jpg',
-  'hover-details-dark.jpg',
-  'notifications-dark.jpg',
-  'heatmap-chart-dark.jpg',
-  'date-selector-dark.jpg',
-  'notetaker-log-dark.jpg',
-  'select-component-dark.jpg',
-  'transfer-call-dark.jpg',
-  'button-component-dark.jpg',
-  'color-palette-dark.jpg',
+// Aquí puedes añadir tus imágenes y, opcionalmente, un link a un case study.
+// El slug es opcional (ej: slug: 'mi-proyecto').
+// El name es opcional, por defecto se genera basado en el nombre de la imagen.
+const items: { img: string; slug?: string; name?: string }[] = [
+  { img: "mobile-app-home-light.jpg", slug: "mobile", name: undefined },
+  { img: "agent-prompt-editor-light.jpg", slug: "agents", name: undefined },
+  { img: "animacion-email.mp4", slug: undefined, name: 'Email editor AI Assitant' },
+  { img: "notetaker-log-light.jpg", slug: undefined, name: undefined },
+  {
+    img: "form-components-light.jpg",
+    slug: undefined,
+    name: "Switch, checkbox and radio button",
+  },
+  { img: "calendar-modal-light.jpg", slug: undefined, name: undefined },
+  { img: "intensity-of-activity-light.jpg", slug: undefined, name: undefined },
+  {
+    img: "activity-hover-details-fixed.mp4",
+    slug: undefined,
+    name: "Activity details",
+  },
+  {
+    img: "agent-creation-variables-light.jpg",
+    slug: "agents",
+    name: undefined,
+  },
+  {
+    img: "app-redesign-activity-feed-light.jpg",
+    slug: "sidepanel",
+    name: "Extension redesign activity feed",
+  },
+  { img: "mobile-app-call-details-light.jpg", slug: "mobile", name: undefined },
+  { img: "notifications-light.jpg", slug: undefined, name: undefined },
+  { img: "heatmap-chart-light.jpg", slug: undefined, name: undefined },
+  {
+    img: "app-redesign-home-light.jpg",
+    slug: "sidepanel",
+    name: "Extension redesing home",
+  },
+  { img: "calendar-options-light.jpg", slug: undefined, name: undefined },
+  { img: "dashboard-breakdown-light.jpg", slug: "dashboards", name: undefined },
+  { img: "animation-dashboards-modal.mp4", slug: undefined, name: 'Save dashboard view' },
+  { img: "select-component-light.jpg", slug: undefined, name: undefined },
+  { img: "agent-creation-card-light.jpg", slug: "agents", name: undefined },
+  { img: "transfer-call-light.jpg", slug: undefined, name: undefined },
 ];
 ---
 
-<ScrollReveal>
-  <section class="work-section py-20 md:py-28 max-w-content mx-auto px-6 bg-neutral-50 dark:bg-neutral-950" id="work">
-    <div class="work-section__header mb-12">
-      <h2 class="font-mono text-sm text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
-        {t('home.notableWork')}
-      </h2>
-    </div>
+<section class="work-section py-8 px-6 bg-white" id="work">
+  <div class="work-gallery columns-1 min-[1200px]:columns-3 gap-6 w-full">
+    {
+      items.map((item, index) => {
+        const defaultName = item.img
+          .replace(/-light\.[^.]+$/, "")
+          .replace(/\.[^.]+$/, "")
+          .replace(/-/g, " ")
+          .replace(/\b\w/g, (l) => l.toUpperCase());
+        const displayName = item.name || defaultName;
 
-    <div class="work-section__gallery">
-      <!-- Contenedor Modo Claro -->
-      <div class="work-gallery work-gallery--light">
-        {lightImages.map((img, index) => (
-          <img src={`/images/work-images/${img}`} alt="Work" class="work-image" loading={index < 3 ? "eager" : "lazy"} />
-        ))}
-      </div>
+        const isVideo = item.img.endsWith(".mp4");
 
-      <!-- Contenedor Modo Oscuro -->
-      <div class="work-gallery work-gallery--dark">
-        {darkImages.map((img, index) => (
-          <img src={`/images/work-images/${img}`} alt="Work" class="work-image" loading={index < 3 ? "eager" : "lazy"} />
-        ))}
-      </div>
-    </div>
-  </section>
-</ScrollReveal>
+        const content = (
+          <div class="relative group bg-[#F7F7F7] rounded-xl">
+            {isVideo ? (
+              <video
+                src={`/images/work-images/${item.img}`}
+                class="work-image w-full h-auto object-cover rounded-xl transition-opacity duration-500"
+                autoplay
+                muted
+                playsinline
+                onended="setTimeout(() => { this.style.opacity = 0; setTimeout(() => { this.currentTime = 1; this.play(); this.style.opacity = 1; }, 500); }, 3500)"
+              />
+            ) : (
+              <img
+                src={`/images/work-images/${item.img}`}
+                alt={displayName}
+                class="work-image w-full h-auto object-cover rounded-xl"
+                loading="eager"
+              />
+            )}
+            <div class="absolute bottom-4 left-4 flex flex-wrap gap-2 pointer-events-none opacity-0 group-hover:opacity-100 [@media(hover:none)]:opacity-100 transition-opacity duration-300">
+              <span class="bg-white/90 backdrop-blur-sm text-neutral-800 text-xs font-medium px-3 py-1.5 rounded-full shadow-sm">
+                {displayName}
+              </span>
+              {item.slug && (
+                <span class="bg-neutral-800/90 backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1.5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
+                  Use case
+                </span>
+              )}
+            </div>
+          </div>
+        );
 
-<style>
-  .work-section {
-    width: 100%;
-    overflow: hidden;
-    /* Ensure the section takes the background color from Tailwind classes */
-  }
+        if (item.slug) {
+          const href = getLocalizedPath(`/work/${item.slug}`, lang);
+          return (
+            <a
+              href={href}
+              class="block mb-6 break-inside-avoid hover:opacity-90 transition-opacity"
+            >
+              {content}
+            </a>
+          );
+        }
 
-  @media (max-width: 639px) {
-    .work-section {
-      max-width: 100%;
+        return (
+          <div class="overflow-hidden rounded-xl mb-6 break-inside-avoid">
+            {content}
+          </div>
+        );
+      })
     }
-  }
-
-  .work-gallery {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem; 
-  }
-
-  .work-image {
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    border-radius: 0.75rem;
-  }
-
-  @media (max-width: 639px) {
-    .work-image {
-      width: 100%;
-    }
-  }
-
-  /* Lógica de cambio de tema */
-  .work-gallery--dark {
-    display: none;
-  }
-
-  :global(.dark) .work-gallery--light {
-    display: none;
-  }
-
-  :global(.dark) .work-gallery--dark {
-    display: flex;
-  }
-</style>
+  </div>
+</section>

@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
-import CaseStudyCarousel from '../components/CaseStudyCarousel.astro';
+
 import NotableWork from '../components/NotableWork.astro';
 import { useTranslations } from '../i18n/utils';
 import { getCollection } from 'astro:content';
@@ -23,9 +22,7 @@ const carouselStudies = caseStudies.map((study) => ({
 ---
 
 <BaseLayout title={t('meta.title')} description={t('meta.description')} lang={lang}>
-  <Hero lang={lang} />
 
-  <CaseStudyCarousel studies={carouselStudies} lang={lang} />
 
   <NotableWork lang={lang} />
 </BaseLayout>

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
-@custom-variant dark (&:where(.dark, .dark *));
+
 
 @font-face {
   font-family: 'Satoshi';
@@ -96,10 +96,7 @@ body {
   line-height: 1.6;
 }
 
-.dark body {
-  background-color: var(--color-neutral-950);
-  color: var(--color-neutral-100);
-}
+
 
 /* Typography scale - Major Third (1.25) */
 h1, h2, h3, h4 {
@@ -124,7 +121,4 @@ h1, h2, h3, h4 {
   color: var(--color-neutral-50);
 }
 
-.dark ::selection {
-  background-color: var(--color-neutral-100);
-  color: var(--color-neutral-950);
-}
+

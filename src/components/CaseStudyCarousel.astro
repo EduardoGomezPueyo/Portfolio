@@ -23,7 +23,7 @@ const t = useTranslations(lang);
 <ScrollReveal>
   <section class="case-study-carousel pb-20 md:pb-28 max-w-content mx-auto px-6" id="case-study-carousel">
     <div class="carousel-header">
-      <h2 class="font-mono text-sm text-neutral-500 dark:text-neutral-400 uppercase tracking-wider text-left">
+      <h2 class="font-mono text-sm text-neutral-500 uppercase tracking-wider text-left">
         {t('home.selectedWork')}
       </h2>
     </div>
@@ -48,7 +48,7 @@ const t = useTranslations(lang);
                 />
               </div>
               <div class="carousel-card__content">
-                <h3 class="carousel-card__title font-display font-bold text-neutral-950 dark:text-neutral-50">
+                <h3 class="carousel-card__title font-display font-bold text-neutral-950">
                   {study.title}
                 </h3>
                 <span class="carousel-card__cta">
@@ -123,9 +123,7 @@ const t = useTranslations(lang);
     transition: opacity 0.35s ease, filter 0.35s ease, box-shadow 0.3s ease;
   }
 
-  :global(.dark) .carousel-card {
-    background: var(--color-neutral-900);
-  }
+
 
   /* --- Hover dimming: when hovering the viewport, dim all cards, un-dim the hovered one --- */
   .carousel-viewport:hover .carousel-card {
@@ -139,14 +137,7 @@ const t = useTranslations(lang);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   }
 
-  :global(.dark) .carousel-viewport:hover .carousel-card {
-    filter: brightness(0.45);
-  }
 
-  :global(.dark) .carousel-viewport:hover .carousel-card:hover {
-    filter: brightness(1);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  }
 
   .carousel-card__image {
     aspect-ratio: 16 / 10;
@@ -154,9 +145,7 @@ const t = useTranslations(lang);
     background: var(--color-neutral-200);
   }
 
-  :global(.dark) .carousel-card__image {
-    background: var(--color-neutral-800);
-  }
+
 
   /* --- Card content: title + CTA --- */
   .carousel-card__content {
@@ -195,10 +184,7 @@ const t = useTranslations(lang);
     transition: all 0.2s ease;
   }
 
-  :global(.dark) .carousel-card__cta {
-    color: var(--color-neutral-300);
-    border-color: var(--color-neutral-700);
-  }
+
 
   .carousel-card:hover .carousel-card__cta {
     background: var(--color-neutral-200);
@@ -206,11 +192,7 @@ const t = useTranslations(lang);
     border-color: var(--color-neutral-300);
   }
 
-  :global(.dark) .carousel-card:hover .carousel-card__cta {
-    background: var(--color-neutral-800);
-    color: var(--color-neutral-200);
-    border-color: var(--color-neutral-600);
-  }
+
 
   /* --- Dot navigation --- */
   .carousel-dots {
@@ -233,9 +215,7 @@ const t = useTranslations(lang);
     outline: none;
   }
 
-  :global(.dark) .carousel-dot {
-    background: var(--color-neutral-700);
-  }
+
 
   .carousel-dot:hover {
     background: var(--color-neutral-500);
@@ -248,9 +228,7 @@ const t = useTranslations(lang);
     border-radius: 9999px;
   }
 
-  :global(.dark) .carousel-dot.is-active {
-    background: var(--color-neutral-100);
-  }
+
 
   /* --- Responsive card sizing --- */
   @media (max-width: 639px) {

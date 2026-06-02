@@ -10,7 +10,7 @@ const { src, alt, caption, full = false } = Astro.props;
 ---
 
 <figure class:list={['my-12', full ? 'max-w-content mx-auto' : '']}>
-  <div class="overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900">
+  <div class="overflow-hidden rounded-lg bg-neutral-100">
     <img
       src={src}
       alt={alt}
@@ -19,7 +19,7 @@ const { src, alt, caption, full = false } = Astro.props;
     />
   </div>
   {caption && (
-    <figcaption class="mt-3 text-sm text-neutral-500 dark:text-neutral-400 text-center">
+    <figcaption class="mt-3 text-sm text-neutral-500 text-center">
       {caption}
     </figcaption>
   )}
