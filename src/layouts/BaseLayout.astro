@@ -28,5 +28,30 @@ const { title, description, lang, image } = Astro.props;
       <slot />
     </main>
     <Footer />
+    <script>
+      function initBlurLoad() {
+        // Handle images
+        document.querySelectorAll<HTMLImageElement>('img:not([data-no-blur])').forEach((img) => {
+          if (img.complete && img.naturalWidth > 0) {
+            img.setAttribute('data-loaded', '');
+          } else {
+            img.addEventListener('load', () => img.setAttribute('data-loaded', ''), { once: true });
+            img.addEventListener('error', () => img.setAttribute('data-loaded', ''), { once: true });
+          }
+        });
+
+        // Handle videos
+        document.querySelectorAll<HTMLVideoElement>('video:not([data-no-blur])').forEach((video) => {
+          if (video.readyState >= 2) {
+            video.setAttribute('data-loaded', '');
+          } else {
+            video.addEventListener('loadeddata', () => video.setAttribute('data-loaded', ''), { once: true });
+            video.addEventListener('error', () => video.setAttribute('data-loaded', ''), { once: true });
+          }
+        });
+      }
+
+      document.addEventListener('astro:page-load', initBlurLoad);
+    </script>
   </body>
 </html>

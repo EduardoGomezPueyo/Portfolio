@@ -13,25 +13,25 @@ const t = useTranslations(lang);
 // Aquí puedes añadir tus imágenes y, opcionalmente, un link a un case study.
 // El slug es opcional (ej: slug: 'mi-proyecto').
 // El name es opcional, por defecto se genera basado en el nombre de la imagen.
-const items: { img: string; slug?: string; name?: string }[] = [
-  { img: "mobile-app-home-light.jpg", slug: "mobile", name: undefined },
-  { img: "agent-prompt-editor-light.jpg", slug: "agents", name: undefined },
-  { img: "animacion-email.mp4", slug: undefined, name: 'Email editor AI Assistant' },
-  { img: "calendar-options-light.jpg", slug: undefined, name: 'Tasks in calendar' },
-  { img: "form-components-light.jpg", slug: undefined, name: "Switch, checkbox and radio button"},
-  { img: "calendar-modal-light.jpg", slug: undefined, name: undefined },
-  { img: "activity-hover-details.mp4", slug: undefined, name: "Activity details interaction"},
-  { img: "transfer-call-light.jpg", slug: undefined, name: undefined },
-  { img: "email-editor-light.jpg", slug: undefined, name: undefined },
-  { img: "mobile-app-call-details-light.jpg", slug: "mobile", name: undefined },
-  { img: "notifications-light.jpg", slug: undefined, name: undefined },
-  { img: "app-redesign-activity-feed-light.jpg", slug: "sidepanel", name: "Extension redesign activity feed" },
-  { img: "app-redesign-home-light.jpg", slug: "sidepanel", name: "Extension redesing home"},
-  { img: "notetaker-log-light.jpg", slug: undefined, name: undefined },
-  { img: "dashboard-breakdown-light.jpg", slug: "dashboards", name: undefined },
-  { img: "animation-dashboards-modal.mp4", slug: undefined, name: 'Save dashboard view' },
-  { img: "agent-creation-card-light.jpg", slug: "agents", name: undefined },
-  { img: "agent-creation-variables-light.jpg", slug: "agents",name: undefined },
+const items: { img: string; w: number; h: number; slug?: string; name?: string }[] = [
+  { img: "mobile-app-home-light.jpg", w: 1600, h: 1852, slug: "mobile", name: undefined },
+  { img: "agent-prompt-editor-light.jpg", w: 1600, h: 1061, slug: "agents", name: undefined },
+  { img: "animacion-email.mp4", w: 942, h: 1232, slug: undefined, name: 'Email editor AI Assistant' },
+  { img: "calendar-options-light.jpg", w: 1600, h: 1615, slug: undefined, name: 'Tasks in calendar' },
+  { img: "form-components-light.jpg", w: 1600, h: 1267, slug: undefined, name: "Switch, checkbox and radio button"},
+  { img: "calendar-modal-light.jpg", w: 1600, h: 1190, slug: undefined, name: undefined },
+  { img: "activity-hover-details.mp4", w: 1384, h: 1230, slug: undefined, name: "Activity details interaction"},
+  { img: "transfer-call-light.jpg", w: 1600, h: 1525, slug: undefined, name: undefined },
+  { img: "email-editor-light.jpg", w: 1600, h: 1060, slug: undefined, name: undefined },
+  { img: "mobile-app-call-details-light.jpg", w: 1600, h: 1852, slug: "mobile", name: undefined },
+  { img: "notifications-light.jpg", w: 1600, h: 848, slug: undefined, name: undefined },
+  { img: "app-redesign-activity-feed-light.jpg", w: 1600, h: 1712, slug: "sidepanel", name: "Extension redesign activity feed" },
+  { img: "app-redesign-home-light.jpg", w: 1600, h: 1558, slug: "sidepanel", name: "Extension redesing home"},
+  { img: "notetaker-log-light.jpg", w: 1600, h: 1779, slug: undefined, name: undefined },
+  { img: "dashboard-breakdown-light.jpg", w: 1600, h: 959, slug: "dashboards", name: undefined },
+  { img: "animation-dashboards-modal.mp4", w: 986, h: 1228, slug: undefined, name: 'Save dashboard view' },
+  { img: "agent-creation-card-light.jpg", w: 1600, h: 1045, slug: "agents", name: undefined },
+  { img: "agent-creation-variables-light.jpg", w: 1600, h: 1290, slug: "agents",name: undefined },
 ];
 ---
 
@@ -54,6 +54,8 @@ const items: { img: string; slug?: string; name?: string }[] = [
               <video
                 src={`/images/work-images/${item.img}`}
                 class="work-image w-full h-auto object-cover rounded-xl transition-opacity duration-500"
+                width={item.w}
+                height={item.h}
                 autoplay
                 muted
                 playsinline
@@ -64,6 +66,8 @@ const items: { img: string; slug?: string; name?: string }[] = [
                 src={`/images/work-images/${item.img}`}
                 alt={displayName}
                 class="work-image w-full h-auto object-cover rounded-xl"
+                width={item.w}
+                height={item.h}
                 loading="eager"
               />
             )}
