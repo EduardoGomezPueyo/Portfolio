@@ -187,7 +187,7 @@ const items: {
             )}
             <div class="absolute bottom-4 left-4 flex flex-wrap gap-2 pointer-events-none">
               {item.slug && (
-                <span class="bg-neutral-800/90 backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1.5 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                <span class="case-study-label bg-neutral-800/90 backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1.5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
@@ -234,3 +234,27 @@ const items: {
     }
   </div>
 </section>
+
+<style>
+  /* Case study label: hidden by default with vanish effect */
+  .case-study-label {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(4px);
+    transition: opacity 0.4s ease-out, filter 0.4s ease-out, transform 0.4s ease-out;
+    pointer-events: none;
+  }
+
+  /* Reveal when sibling image/video is loaded */
+  .work-image[data-loaded] ~ div .case-study-label {
+    opacity: 0.6;
+    filter: blur(0);
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Full opacity on hover */
+  .group:hover .work-image[data-loaded] ~ div .case-study-label {
+    opacity: 1;
+  }
+</style>
