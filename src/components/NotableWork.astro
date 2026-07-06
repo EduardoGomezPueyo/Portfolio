@@ -13,25 +13,139 @@ const t = useTranslations(lang);
 // Aquí puedes añadir tus imágenes y, opcionalmente, un link a un case study.
 // El slug es opcional (ej: slug: 'mi-proyecto').
 // El name es opcional, por defecto se genera basado en el nombre de la imagen.
-const items: { img: string; w: number; h: number; slug?: string; name?: string }[] = [
-  { img: "mobile-app-home-light.jpg", w: 1600, h: 1852, slug: "mobile", name: undefined },
-  { img: "agent-prompt-editor-light.jpg", w: 1600, h: 1061, slug: "agents", name: undefined },
-  { img: "animacion-email.mp4", w: 942, h: 1232, slug: undefined, name: 'Email editor AI Assistant' },
-  { img: "calendar-options-light.jpg", w: 1600, h: 1615, slug: undefined, name: 'Tasks in calendar' },
-  { img: "form-components-light.jpg", w: 1600, h: 1267, slug: undefined, name: "Switch, checkbox and radio button"},
-  { img: "calendar-modal-light.jpg", w: 1600, h: 1190, slug: undefined, name: undefined },
-  { img: "activity-hover-details.mp4", w: 1384, h: 1230, slug: undefined, name: "Activity details interaction"},
-  { img: "transfer-call-light.jpg", w: 1600, h: 1525, slug: undefined, name: undefined },
-  { img: "email-editor-light.jpg", w: 1600, h: 1060, slug: undefined, name: undefined },
-  { img: "mobile-app-call-details-light.jpg", w: 1600, h: 1852, slug: "mobile", name: undefined },
-  { img: "notifications-light.jpg", w: 1600, h: 848, slug: undefined, name: undefined },
-  { img: "app-redesign-activity-feed-light.jpg", w: 1600, h: 1712, slug: "sidepanel", name: "Extension redesign activity feed" },
-  { img: "app-redesign-home-light.jpg", w: 1600, h: 1558, slug: "sidepanel", name: "Extension redesing home"},
-  { img: "notetaker-log-light.jpg", w: 1600, h: 1779, slug: undefined, name: undefined },
-  { img: "dashboard-breakdown-light.jpg", w: 1600, h: 959, slug: "dashboards", name: undefined },
-  { img: "animation-dashboards-modal.mp4", w: 986, h: 1228, slug: undefined, name: 'Save dashboard view' },
-  { img: "agent-creation-card-light.jpg", w: 1600, h: 1045, slug: "agents", name: undefined },
-  { img: "agent-creation-variables-light.jpg", w: 1600, h: 1290, slug: "agents",name: undefined },
+const items: {
+  img: string;
+  w: number;
+  h: number;
+  slug?: string;
+  name?: string;
+}[] = [
+  {
+    img: "mobile-app-home-light.jpg",
+    w: 1600,
+    h: 1852,
+    slug: "mobile",
+    name: undefined,
+  },
+  {
+    img: "agent-prompt-editor-light.jpg",
+    w: 1600,
+    h: 1061,
+    slug: "agents",
+    name: undefined,
+  },
+  {
+    img: "animacion-email.mp4",
+    w: 942,
+    h: 1232,
+    slug: undefined,
+    name: "Email editor AI Assistant",
+  },
+  {
+    img: "calendar-options-light.jpg",
+    w: 1600,
+    h: 1615,
+    slug: undefined,
+    name: "Tasks in calendar",
+  },
+  {
+    img: "form-components-light.jpg",
+    w: 1600,
+    h: 1267,
+    slug: undefined,
+    name: "Switch, checkbox and radio button",
+  },
+  {
+    img: "calendar-modal-light.jpg",
+    w: 1600,
+    h: 1190,
+    slug: undefined,
+    name: undefined,
+  },
+  {
+    img: "activity-hover-details.mp4",
+    w: 1384,
+    h: 1230,
+    slug: undefined,
+    name: "Activity details interaction",
+  },
+  {
+    img: "transfer-call-light.jpg",
+    w: 1600,
+    h: 1525,
+    slug: undefined,
+    name: undefined,
+  },
+  {
+    img: "email-editor-light.jpg",
+    w: 1600,
+    h: 1060,
+    slug: undefined,
+    name: undefined,
+  },
+  {
+    img: "mobile-app-call-details-light.jpg",
+    w: 1600,
+    h: 1852,
+    slug: "mobile",
+    name: undefined,
+  },
+  {
+    img: "notifications-light.jpg",
+    w: 1600,
+    h: 848,
+    slug: undefined,
+    name: undefined,
+  },
+  {
+    img: "app-redesign-activity-feed-light.jpg",
+    w: 1600,
+    h: 1712,
+    slug: "sidepanel",
+    name: "Extension redesign activity feed",
+  },
+  {
+    img: "app-redesign-home-light.jpg",
+    w: 1600,
+    h: 1558,
+    slug: "sidepanel",
+    name: "Extension redesing home",
+  },
+  {
+    img: "notetaker-log-light.jpg",
+    w: 1600,
+    h: 1779,
+    slug: undefined,
+    name: undefined,
+  },
+  {
+    img: "dashboard-breakdown-light.jpg",
+    w: 1600,
+    h: 959,
+    slug: "dashboards",
+    name: undefined,
+  },
+  {
+    img: "animation-dashboards-modal.mp4",
+    w: 986,
+    h: 1228,
+    slug: undefined,
+    name: "Save dashboard view",
+  },
+  {
+    img: "agent-creation-card-light.jpg",
+    w: 1600,
+    h: 1045,
+    slug: "agents",
+    name: undefined,
+  },
+  {
+    img: "agent-creation-variables-light.jpg",
+    w: 1600,
+    h: 1290,
+    slug: "agents",
+    name: undefined,
+  },
 ];
 ---
 
@@ -71,12 +185,9 @@ const items: { img: string; w: number; h: number; slug?: string; name?: string }
                 loading="eager"
               />
             )}
-            <div class="absolute bottom-4 left-4 flex flex-wrap gap-2 pointer-events-none opacity-0 group-hover:opacity-100 [@media(hover:none)]:opacity-100 transition-opacity duration-300">
-              <span class="bg-white/90 backdrop-blur-sm text-neutral-800 text-xs font-medium px-3 py-1.5 rounded-full shadow-sm">
-                {displayName}
-              </span>
+            <div class="absolute bottom-4 left-4 flex flex-wrap gap-2 pointer-events-none">
               {item.slug && (
-                <span class="bg-neutral-800/90 backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1.5">
+                <span class="bg-neutral-800/90 backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1.5 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
@@ -92,9 +203,12 @@ const items: { img: string; w: number; h: number; slug?: string; name?: string }
                     <polyline points="15 3 21 3 21 9" />
                     <line x1="10" y1="14" x2="21" y2="3" />
                   </svg>
-                  Use case
+                  Case study
                 </span>
               )}
+              <span class="bg-white/90 backdrop-blur-sm text-neutral-800 text-xs font-medium px-3 py-1.5 rounded-full shadow-sm opacity-0 group-hover:opacity-100 [@media(hover:none)]:opacity-100 transition-opacity duration-300">
+                {displayName}
+              </span>
             </div>
           </div>
         );
