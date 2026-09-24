@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NotableWork from '../components/NotableWork.astro';
+import { useTranslations } from '../i18n/utils';
+
+const lang = 'en';
+const t = useTranslations(lang);
+---
+
+<BaseLayout title={t('meta.title')} description={t('meta.description')} lang={lang}>
+  <NotableWork lang={lang} />
+</BaseLayout>

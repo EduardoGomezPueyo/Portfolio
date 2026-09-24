@@ -1,9 +1,13 @@
 ---
-interface Props {
-  currentPath?: string;
-}
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 
-const { currentPath } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentPath = Astro.url.pathname;
+
+const caseStudiesPath = getLocalizedPath('/', lang);
+const showcasePath = getLocalizedPath('/showcase', lang);
+const aboutPath = getLocalizedPath('/about', lang);
 ---
 
 <nav
@@ -15,28 +19,34 @@ const { currentPath } = Astro.props;
     <!-- Left: Name -->
     <div class="justify-self-start">
       <a
-        href="/"
+        href={caseStudiesPath}
         class="text-sm font-semibold text-neutral-700 hover:text-neutral-950 transition-colors"
       >
         Eduardo Gómez
       </a>
     </div>
 
-    <!-- Center: Work + About -->
+    <!-- Center: Case Studies + Showcase + About -->
     <div
-      class="justify-self-center flex items-center gap-6 [@media(hover:none)]:justify-self-end"
+      class="justify-self-center flex items-center gap-6 [@media(hover:none)]:justify-self-end text-sm font-semibold"
     >
       <a
-        href="/"
-        class="text-sm font-semibold text-neutral-700 hover:text-neutral-950 transition-colors"
+        href={caseStudiesPath}
+        class={`transition-colors ${currentPath === caseStudiesPath || currentPath === '/case-studies' || currentPath === '/es/case-studies' ? 'text-neutral-950 font-bold' : 'text-neutral-600 hover:text-neutral-950'}`}
       >
-        Work
+        {t('nav.caseStudies')}
       </a>
       <a
-        href="/about"
-        class="text-sm font-semibold text-neutral-700 hover:text-neutral-950 transition-colors"
+        href={showcasePath}
+        class={`transition-colors ${currentPath.includes('/showcase') ? 'text-neutral-950 font-bold' : 'text-neutral-600 hover:text-neutral-950'}`}
       >
-        About
+        {t('nav.showcase')}
+      </a>
+      <a
+        href={aboutPath}
+        class={`transition-colors ${currentPath.includes('/about') ? 'text-neutral-950 font-bold' : 'text-neutral-600 hover:text-neutral-950'}`}
+      >
+        {t('nav.about')}
       </a>
     </div>
 

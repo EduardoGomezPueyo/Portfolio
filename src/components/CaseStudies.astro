@@ -1,0 +1,153 @@
+---
+import type { Lang } from "../i18n/languages";
+import { getLocalizedPath } from "../i18n/utils";
+
+interface CaseStudy {
+  title: string;
+  description: string;
+  thumbnail: string;
+  slug: string;
+}
+
+interface Props {
+  lang: Lang;
+  studies: CaseStudy[];
+}
+
+const { lang, studies } = Astro.props;
+---
+
+<section class="case-studies-section bg-white py-12 md:py-16">
+  <div class="case-studies-container max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24">
+    <!-- Cards grid -->
+    <div class="case-studies-grid">
+      {studies.map((study) => {
+        const href = getLocalizedPath(`/work/${study.slug}`, lang);
+        return (
+          <a href={href} class="cs-card group" data-cs-card>
+            <!-- Thumbnail -->
+            <div class="cs-card-thumb">
+              <img
+                src={study.thumbnail}
+                alt={study.title}
+                class="cs-card-img"
+                loading="eager"
+                data-no-blur
+              />
+            </div>
+
+            <!-- Content -->
+            <div class="cs-card-body">
+              <h3 class="cs-card-title">{study.title}</h3>
+              <p class="cs-card-desc">{study.description}</p>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ── Grid Layout ── */
+  .case-studies-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 2rem;
+    width: 100%;
+  }
+
+  @media (max-width: 900px) {
+    .case-studies-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  /* ── Card ── */
+  .cs-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    background: #F7F7F7;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    text-decoration: none;
+    color: inherit;
+    transition:
+      opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      filter 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, filter, transform;
+  }
+
+  /* ── Spotlight hover: dim siblings ── */
+  .case-studies-grid:hover .cs-card {
+    opacity: 0.35;
+    filter: saturate(0.2);
+  }
+
+  .case-studies-grid:hover .cs-card:hover {
+    opacity: 1;
+    filter: saturate(1);
+    transform: translateY(-6px);
+    box-shadow:
+      0 20px 40px -12px rgba(0, 0, 0, 0.1),
+      0 4px 16px -4px rgba(0, 0, 0, 0.04);
+  }
+
+  /* ── Thumbnail ── */
+  .cs-card-thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #eaeaea;
+  }
+
+  .cs-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .cs-card:hover .cs-card-img {
+    transform: scale(1.03);
+  }
+
+  /* ── Body ── */
+  .cs-card-body {
+    padding: 1.5rem 1.75rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .cs-card-title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--color-neutral-900);
+    margin: 0;
+  }
+
+  .cs-card-desc {
+    font-family: var(--font-body);
+    font-size: 0.925rem;
+    line-height: 1.55;
+    color: var(--color-neutral-500);
+    margin: 0.35rem 0 0;
+  }
+
+  /* Disable hover effects on touch devices */
+  @media (hover: none) {
+    .case-studies-grid:hover .cs-card {
+      opacity: 1;
+      filter: saturate(1);
+    }
+  }
+</style>

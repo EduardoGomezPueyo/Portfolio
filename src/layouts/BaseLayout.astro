@@ -29,7 +29,47 @@ const { title, description, lang, image } = Astro.props;
     </main>
     <Footer />
     <script>
-      function initBlurLoad() {
+      function setupVideo(video: HTMLVideoElement) {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+
+        const markLoaded = () => {
+          video.setAttribute('data-loaded', '');
+        };
+
+        const attemptPlay = () => {
+          markLoaded();
+          if (video.paused) {
+            video.play().catch(() => {});
+          }
+        };
+
+        // Guarantee continuous looping even if browser throttles in background
+        video.addEventListener('ended', () => {
+          video.currentTime = 0;
+          video.play().catch(() => {});
+        });
+
+        video.addEventListener('loadedmetadata', markLoaded, { once: true });
+        video.addEventListener('loadeddata', markLoaded, { once: true });
+        video.addEventListener('canplay', attemptPlay, { once: true });
+        video.addEventListener('playing', markLoaded, { once: true });
+        video.addEventListener('timeupdate', markLoaded, { once: true });
+        video.addEventListener('error', markLoaded, { once: true });
+
+        // CRITICAL: When Astro ClientRouter swaps pages, newly inserted <video>
+        // DOM nodes are in networkState 0 (NETWORK_EMPTY) and will NOT load/display
+        // unless video.load() is explicitly called.
+        if (video.readyState >= 2) {
+          attemptPlay();
+        } else {
+          video.load();
+          video.play().catch(() => {});
+        }
+      }
+
+      function initMedia() {
         // Handle images
         document.querySelectorAll<HTMLImageElement>('img:not([data-no-blur])').forEach((img) => {
           if (img.complete && img.naturalWidth > 0) {
@@ -41,17 +81,42 @@ const { title, description, lang, image } = Astro.props;
         });
 
         // Handle videos
-        document.querySelectorAll<HTMLVideoElement>('video:not([data-no-blur])').forEach((video) => {
-          if (video.readyState >= 2) {
-            video.setAttribute('data-loaded', '');
-          } else {
-            video.addEventListener('loadeddata', () => video.setAttribute('data-loaded', ''), { once: true });
-            video.addEventListener('error', () => video.setAttribute('data-loaded', ''), { once: true });
-          }
+        document.querySelectorAll<HTMLVideoElement>('video').forEach((video) => {
+          setupVideo(video);
         });
       }
 
-      document.addEventListener('astro:page-load', initBlurLoad);
+      // Astro client-side navigation: after-swap begins loading immediately during transition
+      document.addEventListener('astro:after-swap', initMedia);
+
+      // Page load completes setup
+      document.addEventListener('astro:page-load', initMedia);
+
+      // Initial execution
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        initMedia();
+      }
+
+      // Resume when user switches back to this browser tab
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          document.querySelectorAll<HTMLVideoElement>('video').forEach((video) => {
+            if (video.ended) {
+              video.currentTime = 0;
+            }
+            if (video.paused) {
+              video.play().catch(() => {});
+            }
+          });
+        }
+      });
+
+      // Resume on bfcache (browser back/forward navigation)
+      window.addEventListener('pageshow', (event) => {
+        if (event.persisted) {
+          initMedia();
+        }
+      });
     </script>
   </body>
 </html>

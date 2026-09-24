@@ -171,9 +171,10 @@ const items: {
                 width={item.w}
                 height={item.h}
                 autoplay
+                loop
                 muted
                 playsinline
-                onended="setTimeout(() => { this.style.opacity = 0; setTimeout(() => { this.currentTime = 1; this.play(); this.style.opacity = 1; }, 500); }, 3500)"
+                preload="auto"
               />
             ) : (
               <img
@@ -241,7 +242,10 @@ const items: {
     opacity: 0;
     filter: blur(4px);
     transform: translateY(4px);
-    transition: opacity 0.4s ease-out, filter 0.4s ease-out, transform 0.4s ease-out;
+    transition:
+      opacity 0.4s ease-out,
+      filter 0.4s ease-out,
+      transform 0.4s ease-out;
     pointer-events: none;
   }
 

@@ -1,13 +1,13 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import CaseStudies from '../components/CaseStudies.astro';
-import { useTranslations } from '../i18n/utils';
-import { getCollection } from 'astro:content';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CaseStudies from "../components/CaseStudies.astro";
+import { useTranslations } from "../i18n/utils";
+import { getCollection } from "astro:content";
 
-const lang = 'en';
+const lang = "en";
 const t = useTranslations(lang);
 
-const caseStudies = (await getCollection('case-studies'))
+const caseStudies = (await getCollection("case-studies"))
   .filter((study) => study.data.lang === lang && study.data.published !== false)
   .sort((a, b) => a.data.order - b.data.order);
 
@@ -19,6 +19,10 @@ const studiesData = caseStudies.map((study) => ({
 }));
 ---
 
-<BaseLayout title={t('meta.title')} description={t('meta.description')} lang={lang}>
+<BaseLayout
+  title={t("meta.title")}
+  description={t("meta.description")}
+  lang={lang}
+>
   <CaseStudies lang={lang} studies={studiesData} />
 </BaseLayout>
