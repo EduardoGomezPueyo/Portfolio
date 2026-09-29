@@ -1,13 +1,17 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ScrollReveal from '../../components/ScrollReveal.astro';
-import { useTranslations } from '../../i18n/utils';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ScrollReveal from "../../components/ScrollReveal.astro";
+import { useTranslations } from "../../i18n/utils";
 
-const lang = 'es';
+const lang = "es";
 const t = useTranslations(lang);
 ---
 
-<BaseLayout title={`${t('about.title')} — Eduardo Gómez`} description={t('meta.description')} lang={lang}>
+<BaseLayout
+  title={`${t("about.title")} — Eduardo Gómez Pueyo`}
+  description={t("meta.description")}
+  lang={lang}
+>
   <section class="py-24 md:py-32">
     <div class="max-w-content mx-auto px-6">
       <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
@@ -16,7 +20,7 @@ const t = useTranslations(lang);
           <div class="aspect-video rounded-lg bg-neutral-100 overflow-hidden">
             <img
               src="/images/about-picture.jpg"
-              alt="Eduardo Gómez"
+              alt="Eduardo Gómez Pueyo"
               class="w-full h-full object-cover"
               loading="lazy"
             />
@@ -26,11 +30,17 @@ const t = useTranslations(lang);
         <!-- Bio -->
         <ScrollReveal delay={100}>
           <div>
-            <h1 class="text-4xl md:text-5xl font-display font-bold tracking-tight text-neutral-900 mb-8">
-              {t('about.title')}
+            <h1
+              class="text-4xl md:text-5xl font-display font-bold tracking-tight text-neutral-900 mb-8"
+            >
+              {t("about.title")}
             </h1>
             <div class="space-y-4 text-neutral-600 leading-relaxed">
-              {t('about.bio').split('\n\n').map(p => <p>{p}</p>)}
+              {
+                t("about.bio")
+                  .split("\n\n")
+                  .map((p) => <p>{p}</p>)
+              }
             </div>
           </div>
         </ScrollReveal>
@@ -43,29 +53,43 @@ const t = useTranslations(lang);
     <div class="max-w-content mx-auto px-6">
       <ScrollReveal>
         <div class="max-w-narrow">
-          <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight text-neutral-900 mb-4">
-            {t('about.contact')}
+          <h2
+            class="text-3xl md:text-4xl font-display font-bold tracking-tight text-neutral-900 mb-4"
+          >
+            {t("about.contact")}
           </h2>
           <p class="text-neutral-600 mb-8 leading-relaxed">
-            {t('about.contactText')}
+            {t("about.contactText")}
           </p>
 
           <div class="space-y-6">
             <div>
-              <p class="font-mono text-xs text-neutral-500 uppercase tracking-wider mb-2">
-                {t('about.email')}
+              <p
+                class="font-mono text-xs text-neutral-500 uppercase tracking-wider mb-2"
+              >
+                {t("about.email")}
               </p>
-              <a href="mailto:eduardogomezpueyo@gmail.com" class="text-neutral-900 hover:text-neutral-600 transition-colors">
+              <a
+                href="mailto:eduardogomezpueyo@gmail.com"
+                class="text-neutral-900 hover:text-neutral-600 transition-colors"
+              >
                 eduardogomezpueyo@gmail.com
               </a>
             </div>
 
             <div>
-              <p class="font-mono text-xs text-neutral-500 uppercase tracking-wider mb-2">
-                {t('about.social')}
+              <p
+                class="font-mono text-xs text-neutral-500 uppercase tracking-wider mb-2"
+              >
+                {t("about.social")}
               </p>
               <div class="flex gap-6">
-                <a href="https://www.linkedin.com/in/eduardo-gomez-pueyo/" target="_blank" rel="noopener noreferrer" class="text-neutral-900 hover:text-neutral-600 transition-colors">
+                <a
+                  href="https://www.linkedin.com/in/eduardo-gomez-pueyo/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-neutral-900 hover:text-neutral-600 transition-colors"
+                >
                   LinkedIn
                 </a>
               </div>

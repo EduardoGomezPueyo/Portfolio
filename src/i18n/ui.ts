@@ -5,7 +5,7 @@ export const ui = {
     'nav.work': 'Work',
     'nav.about': 'About',
     // Hero
-    'hero.greeting': 'Eduardo Gómez',
+    'hero.greeting': 'Eduardo Gómez Pueyo',
     'hero.role': 'Product Designer',
     'hero.tagline': 'I design digital products that are simple, functional, and human-centered.',
     // Home
@@ -39,8 +39,8 @@ export const ui = {
     'theme.light': 'Light',
     'theme.dark': 'Dark',
     // Meta
-    'meta.title': 'Eduardo Gómez — Product Designer',
-    'meta.description': 'Portfolio of Eduardo Gómez, Product Designer. Designing simple, functional, and human-centered digital products.',
+    'meta.title': 'Eduardo Gómez Pueyo — Product Designer',
+    'meta.description': 'Portfolio of Eduardo Gómez Pueyo, Product Designer. Designing simple, functional, and human-centered digital products.',
   },
   es: {
     // Nav
@@ -48,7 +48,7 @@ export const ui = {
     'nav.work': 'Work',
     'nav.about': 'Sobre mí',
     // Hero
-    'hero.greeting': 'Eduardo Gómez',
+    'hero.greeting': 'Eduardo Gómez Pueyo',
     'hero.role': 'Product Designer',
     'hero.tagline': 'Diseño productos digitales simples, funcionales y centrados en las personas.',
     // Home
@@ -82,7 +82,7 @@ export const ui = {
     'theme.light': 'Claro',
     'theme.dark': 'Oscuro',
     // Meta
-    'meta.title': 'Eduardo Gómez — Product Designer',
-    'meta.description': 'Portfolio de Eduardo Gómez, Product Designer. Diseño de productos digitales simples, funcionales y centrados en las personas.',
+    'meta.title': 'Eduardo Gómez PueyoPueyo — Product Designer',
+    'meta.description': 'Portfolio de Eduardo Gómez Pueyo, Product Designer. Diseño de productos digitales simples, funcionales y centrados en las personas.',
   },
 } as const;

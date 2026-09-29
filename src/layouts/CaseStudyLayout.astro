@@ -1,8 +1,8 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import MetadataGrid from '../components/MetadataGrid.astro';
-import NextProject from '../components/NextProject.astro';
-import type { Lang } from '../i18n/languages';
+import BaseLayout from "./BaseLayout.astro";
+import MetadataGrid from "../components/MetadataGrid.astro";
+import NextProject from "../components/NextProject.astro";
+import type { Lang } from "../i18n/languages";
 
 interface Props {
   title: string;
@@ -21,27 +21,53 @@ interface Props {
   };
 }
 
-const { title, description, heroImage, role, timeline, tools, team, lang, slug, nextProject } = Astro.props;
+const {
+  title,
+  description,
+  heroImage,
+  role,
+  timeline,
+  tools,
+  team,
+  lang,
+  slug,
+  nextProject,
+} = Astro.props;
 ---
 
-<BaseLayout title={`${title} — Eduardo Gómez`} description={description} lang={lang} image={heroImage}>
+<BaseLayout
+  title={`${title} — Eduardo Gómez Pueyo`}
+  description={description}
+  lang={lang}
+  image={heroImage}
+>
   <!-- Hero -->
   <section class="py-24 md:py-32">
     <div class="max-w-content mx-auto px-6">
       <div class="mb-12">
-        <p class="font-mono text-sm text-neutral-500 uppercase tracking-wider mb-4 animate-fade-in">
+        <p
+          class="font-mono text-sm text-neutral-500 uppercase tracking-wider mb-4 animate-fade-in"
+        >
           {role}
         </p>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-neutral-950 mb-6 animate-fade-in-up">
+        <h1
+          class="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-neutral-950 mb-6 animate-fade-in-up"
+        >
           {title}
         </h1>
-        <p class="text-lg text-neutral-700 leading-relaxed animate-fade-in-up" style="animation-delay: 100ms;">
+        <p
+          class="text-lg text-neutral-700 leading-relaxed animate-fade-in-up"
+          style="animation-delay: 100ms;"
+        >
           {description}
         </p>
       </div>
 
       <!-- Hero image -->
-      <div class="overflow-hidden rounded-lg bg-neutral-100 aspect-[16/9] animate-fade-in-up" style="animation-delay: 200ms;">
+      <div
+        class="overflow-hidden rounded-lg bg-neutral-100 aspect-[16/9] animate-fade-in-up"
+        style="animation-delay: 200ms;"
+      >
         <img
           src={heroImage}
           alt={title}
@@ -52,7 +78,13 @@ const { title, description, heroImage, role, timeline, tools, team, lang, slug, 
 
       <!-- Metadata -->
       <div class="mt-12">
-        <MetadataGrid role={role} timeline={timeline} tools={tools} team={team} lang={lang} />
+        <MetadataGrid
+          role={role}
+          timeline={timeline}
+          tools={tools}
+          team={team}
+          lang={lang}
+        />
       </div>
     </div>
   </section>
@@ -60,19 +92,23 @@ const { title, description, heroImage, role, timeline, tools, team, lang, slug, 
   <!-- MDX Content -->
   <section class="pb-24 md:pb-32">
     <div class="max-w-content mx-auto px-6">
-      <div class="prose prose-neutral prose-headings:font-display prose-headings:tracking-tight prose-h2:text-2xl prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-relaxed prose-a:text-neutral-900 prose-img:rounded-lg max-w-none">
+      <div
+        class="prose prose-neutral prose-headings:font-display prose-headings:tracking-tight prose-h2:text-2xl prose-h2:mt-16 prose-h2:mb-6 prose-p:leading-relaxed prose-a:text-neutral-900 prose-img:rounded-lg max-w-none"
+      >
         <slot />
       </div>
     </div>
   </section>
 
   <!-- Next Project -->
-  {nextProject && (
-    <NextProject
-      title={nextProject.title}
-      slug={nextProject.slug}
-      thumbnail={nextProject.thumbnail}
-      lang={lang}
-    />
-  )}
+  {
+    nextProject && (
+      <NextProject
+        title={nextProject.title}
+        slug={nextProject.slug}
+        thumbnail={nextProject.thumbnail}
+        lang={lang}
+      />
+    )
+  }
 </BaseLayout>
