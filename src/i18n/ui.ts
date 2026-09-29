@@ -2,16 +2,16 @@ export const ui = {
   en: {
     // Nav
     'nav.caseStudies': 'Case Studies',
-    'nav.showcase': 'Showcase',
+    'nav.work': 'Work',
     'nav.about': 'About',
     // Hero
     'hero.greeting': 'Eduardo Gómez',
-    'hero.role': 'Product Designer / Product Manager',
+    'hero.role': 'Product Designer',
     'hero.tagline': 'I design digital products that are simple, functional, and human-centered.',
     // Home
     'home.selectedWork': 'Selected Work',
     'home.viewProject': 'View project',
-    'home.notableWork': 'Showcase',
+    'home.notableWork': 'Work',
     'home.caseStudies': 'Case Studies',
     'home.viewCaseStudy': 'View case study',
     // About
@@ -39,22 +39,22 @@ export const ui = {
     'theme.light': 'Light',
     'theme.dark': 'Dark',
     // Meta
-    'meta.title': 'Eduardo Gómez — Product Designer / Product Manager',
-    'meta.description': 'Portfolio of Eduardo Gómez, Product Designer / Product Manager. Designing simple, functional, and human-centered digital products.',
+    'meta.title': 'Eduardo Gómez — Product Designer',
+    'meta.description': 'Portfolio of Eduardo Gómez, Product Designer. Designing simple, functional, and human-centered digital products.',
   },
   es: {
     // Nav
     'nav.caseStudies': 'Casos de estudio',
-    'nav.showcase': 'Showcase',
+    'nav.work': 'Work',
     'nav.about': 'Sobre mí',
     // Hero
     'hero.greeting': 'Eduardo Gómez',
-    'hero.role': 'Product Designer / Product Manager',
+    'hero.role': 'Product Designer',
     'hero.tagline': 'Diseño productos digitales simples, funcionales y centrados en las personas.',
     // Home
     'home.selectedWork': 'Trabajo seleccionado',
     'home.viewProject': 'Ver proyecto',
-    'home.notableWork': 'Showcase',
+    'home.notableWork': 'Work',
     'home.caseStudies': 'Casos de estudio',
     'home.viewCaseStudy': 'Ver caso de estudio',
     // About
@@ -82,7 +82,7 @@ export const ui = {
     'theme.light': 'Claro',
     'theme.dark': 'Oscuro',
     // Meta
-    'meta.title': 'Eduardo Gómez — Product Designer / Product Manager',
-    'meta.description': 'Portfolio de Eduardo Gómez, Product Designer / Product Manager. Diseño de productos digitales simples, funcionales y centrados en las personas.',
+    'meta.title': 'Eduardo Gómez — Product Designer',
+    'meta.description': 'Portfolio de Eduardo Gómez, Product Designer. Diseño de productos digitales simples, funcionales y centrados en las personas.',
   },
 } as const;

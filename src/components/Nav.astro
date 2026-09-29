@@ -1,13 +1,17 @@
 ---
-import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import {
+  getLangFromUrl,
+  useTranslations,
+  getLocalizedPath,
+} from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
 
-const caseStudiesPath = getLocalizedPath('/', lang);
-const showcasePath = getLocalizedPath('/showcase', lang);
-const aboutPath = getLocalizedPath('/about', lang);
+const caseStudiesPath = getLocalizedPath("/", lang);
+const workPath = getLocalizedPath("/work", lang);
+const aboutPath = getLocalizedPath("/about", lang);
 ---
 
 <nav
@@ -26,27 +30,27 @@ const aboutPath = getLocalizedPath('/about', lang);
       </a>
     </div>
 
-    <!-- Center: Case Studies + Showcase + About -->
+    <!-- Center: Case Studies + Work + About -->
     <div
       class="justify-self-center flex items-center gap-6 [@media(hover:none)]:justify-self-end text-sm font-semibold"
     >
       <a
         href={caseStudiesPath}
-        class={`transition-colors ${currentPath === caseStudiesPath || currentPath === '/case-studies' || currentPath === '/es/case-studies' ? 'text-neutral-950 font-bold' : 'text-neutral-600 hover:text-neutral-950'}`}
+        class={`transition-colors ${currentPath === caseStudiesPath || currentPath === "/case-studies" || currentPath === "/es/case-studies" ? "text-neutral-950 font-bold" : "text-neutral-600 hover:text-neutral-950"}`}
       >
-        {t('nav.caseStudies')}
+        {t("nav.caseStudies")}
       </a>
       <a
-        href={showcasePath}
-        class={`transition-colors ${currentPath.includes('/showcase') ? 'text-neutral-950 font-bold' : 'text-neutral-600 hover:text-neutral-950'}`}
+        href={workPath}
+        class={`transition-colors ${currentPath.replace(/\/$/, "") === workPath.replace(/\/$/, "") ? "text-neutral-950 font-bold" : "text-neutral-600 hover:text-neutral-950"}`}
       >
-        {t('nav.showcase')}
+        {t("nav.work")}
       </a>
       <a
         href={aboutPath}
-        class={`transition-colors ${currentPath.includes('/about') ? 'text-neutral-950 font-bold' : 'text-neutral-600 hover:text-neutral-950'}`}
+        class={`transition-colors ${currentPath.includes("/about") ? "text-neutral-950 font-bold" : "text-neutral-600 hover:text-neutral-950"}`}
       >
-        {t('nav.about')}
+        {t("nav.about")}
       </a>
     </div>
 
