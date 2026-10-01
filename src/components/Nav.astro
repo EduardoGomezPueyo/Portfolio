@@ -26,7 +26,8 @@ const aboutPath = getLocalizedPath("/about", lang);
         href={caseStudiesPath}
         class="text-sm font-semibold text-neutral-700 hover:text-neutral-950 transition-colors"
       >
-        Eduardo Gómez Pueyo
+        <span class="[@media(hover:none)]:hidden">Eduardo Gómez Pueyo</span>
+        <span class="hidden [@media(hover:none)]:inline">Eduardo Gómez</span>
       </a>
     </div>
 
@@ -36,7 +37,7 @@ const aboutPath = getLocalizedPath("/about", lang);
     >
       <a
         href={caseStudiesPath}
-        class={`transition-colors ${currentPath === caseStudiesPath || currentPath === "/case-studies" || currentPath === "/es/case-studies" ? "text-neutral-950 font-bold" : "text-neutral-600 hover:text-neutral-950"}`}
+        class={`whitespace-nowrap transition-colors ${currentPath === caseStudiesPath || currentPath === "/case-studies" || currentPath === "/es/case-studies" ? "text-neutral-950 font-bold" : "text-neutral-600 hover:text-neutral-950"}`}
       >
         {t("nav.caseStudies")}
       </a>
