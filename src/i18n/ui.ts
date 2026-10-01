@@ -7,7 +7,7 @@ export const ui = {
     // Hero
     'hero.greeting': 'Eduardo Gómez Pueyo',
     'hero.role': 'Product Designer',
-    'hero.tagline': 'I design digital products that are simple, functional, and human-centered.',
+    'hero.tagline': 'Product designer for complex B2B software. I turn technically dense workflows (AI agents, CRM integrations, analytics) into tools non-technical people can use.',
     // Home
     'home.selectedWork': 'Selected Work',
     'home.viewProject': 'View project',
@@ -50,7 +50,7 @@ export const ui = {
     // Hero
     'hero.greeting': 'Eduardo Gómez Pueyo',
     'hero.role': 'Product Designer',
-    'hero.tagline': 'Diseño productos digitales simples, funcionales y centrados en las personas.',
+    'hero.tagline': 'Diseñador de producto de programas B2B complejos. Convierto flujos densos técnicamente (agentes de IA, integraciones con CRM, analítica) en herramientas que cualquiera puede usar.',
     // Home
     'home.selectedWork': 'Trabajo seleccionado',
     'home.viewProject': 'Ver proyecto',
