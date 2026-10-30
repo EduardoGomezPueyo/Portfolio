@@ -9,6 +9,8 @@ interface CaseStudy {
   description: string;
   thumbnail: ImageMetadata;
   slug: string;
+  context: string;
+  year: string;
 }
 
 interface Props {
@@ -49,6 +51,7 @@ const t = useTranslations(lang);
 
             <!-- Content -->
             <div class="cs-card-body">
+              <p class="cs-card-meta">{study.context} · {study.year}</p>
               <h3 class="cs-card-title">{study.title}</h3>
               <p class="cs-card-desc">{study.description}</p>
             </div>
@@ -168,6 +171,16 @@ const t = useTranslations(lang);
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
+  }
+
+  .cs-card-meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-neutral-500);
+    margin: 0 0 0.25rem;
   }
 
   .cs-card-title {

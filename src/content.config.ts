@@ -19,6 +19,15 @@ const caseStudies = defineCollection({
     timeline: z.string(),
     tools: z.array(z.string()),
     team: z.string().optional(),
+    context: z.string(),
+    year: z.string(),
+    summary: z
+      .object({
+        problem: z.string(),
+        role: z.string(),
+        outcome: z.string(),
+      })
+      .optional(),
     order: z.number(),
     lang: z.enum(['en', 'es']),
     slug: z.string(),

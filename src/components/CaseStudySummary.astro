@@ -1,0 +1,33 @@
+---
+import type { Lang } from '../i18n/languages';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  problem: string;
+  role: string;
+  outcome: string;
+  lang: Lang;
+}
+
+const { problem, role, outcome, lang } = Astro.props;
+const t = useTranslations(lang);
+
+const items = [
+  { label: t('caseStudy.problem'), value: problem },
+  { label: t('caseStudy.myRole'), value: role },
+  { label: t('caseStudy.outcome'), value: outcome },
+];
+---
+
+<div class="grid md:grid-cols-3 gap-8">
+  {items.map((item) => (
+    <div>
+      <p class="font-mono text-xs text-neutral-500 uppercase tracking-wider mb-2">
+        {item.label}
+      </p>
+      <p class="text-sm text-neutral-950 leading-relaxed">
+        {item.value}
+      </p>
+    </div>
+  ))}
+</div>
