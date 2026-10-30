@@ -16,7 +16,7 @@ export const ui = {
     'home.viewCaseStudy': 'View case study',
     // About
     'about.title': 'Nice to meet you',
-    'about.bio': "Yup! That's me, on the right, during my birthday, being yelled at because I did not put the cake facing the camera taking photos.\n\n Hi, I'm Eduardo! I was a journalist that decided to change paths and became a UX designer. I've done a lot of stuff, a little bit of this and that, and ended up knowing how to code a little bit as well.\n\nI really like problem solving in design, especially web/mobile sites. I’ve worked on stack teams with so much talent and I hope to continue doing so because it’s the best way to keep learning and moving forward.\n\nWhen I'm not working you can find me playing with my cat, playing PC games with my friends or searching for a new keycap set.",
+    'about.bio': "Yup! That's me, on the right, during my birthday, being yelled at because I did not put the cake facing the camera taking photos.\n\n Hi, I'm Eduardo! I studied journalism, changed paths to become a product designer, and along the way ended up knowing how to code a little bit as well.\n\nI really like problem solving in design, especially in complex B2B products. I’ve worked on teams stacked with talent and I hope to continue doing so because it’s the best way to keep learning and moving forward.\n\nWhen I'm not working you can find me playing with my cat, playing PC games with my friends or searching for a new keycap set.",
     'about.contact': "Let's work together",
     'about.contactText': "I'm always open to new opportunities and collaborations. Feel free to reach out.",
     'about.email': 'Email',
