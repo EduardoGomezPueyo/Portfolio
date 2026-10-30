@@ -6,7 +6,7 @@ const lang = 'en';
 
 export async function getStaticPaths() {
   const studies = (await getCollection('case-studies')).filter(
-    (s) => s.data.lang === 'en'
+    (s) => s.data.lang === 'en' && s.data.published !== false
   );
 
   return studies.map((study) => ({
@@ -20,7 +20,7 @@ const { Content } = await render(study);
 
 // Find next project
 const allStudies = (await getCollection('case-studies'))
-  .filter((s) => s.data.lang === lang)
+  .filter((s) => s.data.lang === lang && s.data.published !== false)
   .sort((a, b) => a.data.order - b.data.order);
 
 const currentIndex = allStudies.findIndex((s) => s.data.slug === study.data.slug);

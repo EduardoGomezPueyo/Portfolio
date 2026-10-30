@@ -11,13 +11,6 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   integrations: [mdx()],
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'es'],
-    routing: {
-      prefixDefaultLocale: false,
-    },
-  },
   image: {
     service: {
       entrypoint: 'astro/assets/services/sharp',

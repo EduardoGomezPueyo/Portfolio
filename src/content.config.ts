@@ -10,11 +10,11 @@ const caseStudies = defineCollection({
       return entry.replace(/\.mdx$/, '');
     },
   }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string(),
-    thumbnail: z.string(),
-    heroImage: z.string(),
+    thumbnail: image(),
+    heroImage: image(),
     role: z.string(),
     timeline: z.string(),
     tools: z.array(z.string()),

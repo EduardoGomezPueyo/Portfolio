@@ -61,12 +61,29 @@ const { title, description, lang, image } = Astro.props;
         // CRITICAL: When Astro ClientRouter swaps pages, newly inserted <video>
         // DOM nodes are in networkState 0 (NETWORK_EMPTY) and will NOT load/display
         // unless video.load() is explicitly called.
-        if (video.readyState >= 2) {
-          attemptPlay();
-        } else {
-          video.load();
-          video.play().catch(() => {});
-        }
+        whenNearViewport(video, () => {
+          if (video.readyState >= 2) {
+            attemptPlay();
+          } else {
+            video.load();
+            video.play().catch(() => {});
+          }
+        });
+      }
+
+      // Defer loading until the video is close to the viewport, so offscreen videos
+      // don't download on page load (they use preload="none" and no autoplay)
+      function whenNearViewport(video: HTMLVideoElement, callback: () => void) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              observer.disconnect();
+              callback();
+            }
+          },
+          { rootMargin: '200px 0px' }
+        );
+        observer.observe(video);
       }
 
       function initMedia() {
@@ -100,7 +117,8 @@ const { title, description, lang, image } = Astro.props;
       // Resume when user switches back to this browser tab
       document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'visible') {
-          document.querySelectorAll<HTMLVideoElement>('video').forEach((video) => {
+          // Only resume videos that have started loading; offscreen ones wait for the viewport
+          document.querySelectorAll<HTMLVideoElement>('video[data-loaded]').forEach((video) => {
             if (video.ended) {
               video.currentTime = 0;
             }

@@ -1,6 +1,9 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
 interface Props {
-  images: { src: string; alt: string }[];
+  images: { src: ImageMetadata; alt: string }[];
   caption?: string;
 }
 
@@ -15,10 +18,12 @@ const { images, caption } = Astro.props;
     <div class="flex transition-transform duration-300 ease-in-out" data-carousel-track>
       {images.map((image) => (
         <div class="w-full shrink-0">
-          <img
+          <Image
             src={image.src}
             alt={image.alt}
             class="block w-full h-auto"
+            widths={[640, 1104, 1440]}
+            sizes="(min-width: 1152px) 1104px, 100vw"
             loading="lazy"
           />
         </div>

@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import BaseLayout from "./BaseLayout.astro";
 import MetadataGrid from "../components/MetadataGrid.astro";
 import NextProject from "../components/NextProject.astro";
@@ -7,7 +9,7 @@ import type { Lang } from "../i18n/languages";
 interface Props {
   title: string;
   description: string;
-  heroImage: string;
+  heroImage: ImageMetadata;
   role: string;
   timeline: string;
   tools: string[];
@@ -17,7 +19,7 @@ interface Props {
   nextProject?: {
     title: string;
     slug: string;
-    thumbnail: string;
+    thumbnail: ImageMetadata;
   };
 }
 
@@ -39,7 +41,7 @@ const {
   title={`${title} — Eduardo Gómez Pueyo`}
   description={description}
   lang={lang}
-  image={heroImage}
+  image={heroImage.src}
 >
   <!-- Hero -->
   <section class="py-24 md:py-32">
@@ -68,10 +70,13 @@ const {
         class="overflow-hidden rounded-lg bg-neutral-100 aspect-[16/9] animate-fade-in-up"
         style="animation-delay: 200ms;"
       >
-        <img
+        <Image
           src={heroImage}
           alt={title}
           class="w-full h-full object-cover"
+          widths={[640, 1104]}
+          sizes="(min-width: 1152px) 1104px, 100vw"
+          loading="eager"
           transition:name={`project-image-${slug}`}
         />
       </div>

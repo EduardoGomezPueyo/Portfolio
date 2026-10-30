@@ -1,11 +1,13 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import type { Lang } from "../i18n/languages";
 import { getLocalizedPath, useTranslations } from "../i18n/utils";
 
 interface CaseStudy {
   title: string;
   description: string;
-  thumbnail: string;
+  thumbnail: ImageMetadata;
   slug: string;
 }
 
@@ -34,10 +36,12 @@ const t = useTranslations(lang);
           <a href={href} class="cs-card group" data-cs-card>
             <!-- Thumbnail -->
             <div class="cs-card-thumb">
-              <img
+              <Image
                 src={study.thumbnail}
                 alt={study.title}
                 class="cs-card-img"
+                widths={[600, 800, 1152]}
+                sizes="(min-width: 900px) 600px, 100vw"
                 loading="eager"
                 data-no-blur
               />

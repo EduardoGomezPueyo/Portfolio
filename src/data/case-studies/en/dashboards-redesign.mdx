@@ -1,8 +1,8 @@
 ---
 title: "Dashboards redesign"
 description: "A complete redesign of Harmonix's data analytics section, transforming outdated dashboards into useful tools based on real customer feedback and evolving product needs."
-thumbnail: "/images/case-studies/dashboards/thumbnail.jpg"
-heroImage: "/images/case-studies/dashboards/hero.jpg"
+thumbnail: "../../../assets/case-studies/dashboards/thumbnail.jpg"
+heroImage: "../../../assets/case-studies/dashboards/hero.jpg"
 role: "Product designer"
 timeline: "6 months"
 tools: ["Figma"]
@@ -14,6 +14,9 @@ published: true
 ---
 
 import ImageCarousel from '../../../components/ImageCarousel.astro';
+import pipelinePanel from '../../../assets/case-studies/dashboards/pipeline-panel.jpg';
+import aiDashboards from '../../../assets/case-studies/dashboards/ai-dashboards.jpg';
+import searchViews from '../../../assets/case-studies/dashboards/search-views.jpg';
 
 ## Context
 
@@ -27,7 +30,7 @@ The dashboards were built in the product's early stages and hadn't evolved with 
 
 The result was an analytics section that showed information nobody asked for and hid the information everyone needed.
 
-![Old Dashboards](/images/case-studies/dashboards/old-dashboards.jpg)
+![Old Dashboards](../../../assets/case-studies/dashboards/old-dashboards.jpg)
 
 ## What customers told us
 
@@ -41,11 +44,11 @@ From there, we maintained ongoing conversations with customers as we progressed 
 
 <ImageCarousel
   images={[
-    { src: "/images/case-studies/dashboards/pipeline-panel.jpg", alt: "User view on current work pipeline" },
-    { src: "/images/case-studies/dashboards/ai-dashboards.jpg", alt: "Agent dashboards" },
-    { src: "/images/case-studies/dashboards/search-views.jpg", alt: "Search custom views" },
+    { src: pipelinePanel, alt: "User view on current work pipeline" },
+    { src: aiDashboards, alt: "Agent dashboards" },
+    { src: searchViews, alt: "Search custom views" },
   ]}
-  caption="Dashboards rediseñados"
+  caption="Redesigned dashboards"
 />
 
 ### Separating content by category, not by process

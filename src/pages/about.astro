@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import aboutPicture from "../assets/about-picture.jpg";
 import ScrollReveal from "../components/ScrollReveal.astro";
 import { useTranslations } from "../i18n/utils";
 
@@ -18,10 +20,12 @@ const t = useTranslations(lang);
         <!-- Photo -->
         <ScrollReveal>
           <div class="aspect-video rounded-lg bg-neutral-100 overflow-hidden">
-            <img
-              src="/images/about-picture.jpg"
+            <Image
+              src={aboutPicture}
               alt="Eduardo Gómez Pueyo"
               class="w-full h-full object-cover"
+              widths={[560, 1120]}
+              sizes="(min-width: 768px) 520px, 100vw"
               loading="lazy"
             />
           </div>

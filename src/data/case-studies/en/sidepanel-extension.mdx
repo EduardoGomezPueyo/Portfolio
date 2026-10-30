@@ -1,8 +1,8 @@
 ---
 title: "Extension Redesign"
 description: "Redesign of Harmonix's core product: migrating from an extension injected into every web page to a single Side Panel, simplifying the architecture, removing unused features, and improving product stability."
-thumbnail: "/images/case-studies/sidepanel/thumbnail.jpg"
-heroImage: "/images/case-studies/sidepanel/hero.jpg"
+thumbnail: "../../../assets/case-studies/sidepanel/thumbnail.jpg"
+heroImage: "../../../assets/case-studies/sidepanel/hero.jpg"
 role: "Product designer"
 timeline: "1 year"
 tools: ["Figma"]
@@ -14,6 +14,9 @@ published: true
 ---
 
 import ImageCarousel from '../../../components/ImageCarousel.astro';
+import navigation from '../../../assets/case-studies/sidepanel/navigation.jpg';
+import inbox from '../../../assets/case-studies/sidepanel/inbox.jpg';
+import showcase from '../../../assets/case-studies/sidepanel/showcase.jpg';
 
 ## Context
 
@@ -29,7 +32,7 @@ The result was an extension that behaved unreliably and required a disproportion
 
 The opportunity appeared when Google introduced the Side Panel: a dedicated browser space for extensions, independent of page content. A single instance, no need to inject into every page, no conflicts. This wasn't just a technical improvement — it was a chance to rethink the entire experience of the core product.
 
-![Original extension](/images/case-studies/sidepanel/old-extension.jpg)
+![Original extension](../../../assets/case-studies/sidepanel/old-extension.jpg)
 
 ## What Customers Told Us
 
@@ -43,9 +46,9 @@ The redesign couldn't just be a change of container. It also had to be an opport
 
 <ImageCarousel
   images={[
-    { src: "/images/case-studies/sidepanel/navigation.jpg", alt: "Navigation and general view of the application on top of a page" },
-    { src: "/images/case-studies/sidepanel/inbox.jpg", alt: "Organized work that's unified in a single inbox" },
-    { src: "/images/case-studies/sidepanel/showcase.jpg", alt: "Different screens for the application" },
+    { src: navigation, alt: "Navigation and general view of the application on top of a page" },
+    { src: inbox, alt: "Organized work that's unified in a single inbox" },
+    { src: showcase, alt: "Different screens for the application" },
   ]}
   caption="Redesigned Side Panel"
 />
