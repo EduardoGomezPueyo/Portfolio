@@ -13,8 +13,8 @@ interface Props {
   heroImage: ImageMetadata;
   role: string;
   timeline: string;
-  tools: string[];
-  team?: string;
+  platform: string;
+  company: string;
   summary?: {
     problem: string;
     role: string;
@@ -35,8 +35,8 @@ const {
   heroImage,
   role,
   timeline,
-  tools,
-  team,
+  platform,
+  company,
   summary,
   lang,
   slug,
@@ -110,8 +110,8 @@ const {
         <MetadataGrid
           role={role}
           timeline={timeline}
-          tools={tools}
-          team={team}
+          platform={platform}
+          company={company}
           lang={lang}
         />
       </div>

@@ -17,8 +17,8 @@ const caseStudies = defineCollection({
     heroImage: image(),
     role: z.string(),
     timeline: z.string(),
-    tools: z.array(z.string()),
-    team: z.string().optional(),
+    platform: z.string(),
+    company: z.string(),
     context: z.string(),
     year: z.string(),
     summary: z

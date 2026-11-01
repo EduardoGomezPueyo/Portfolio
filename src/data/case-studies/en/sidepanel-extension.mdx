@@ -1,14 +1,18 @@
 ---
 title: "Extension Redesign"
-description: "Redesign of Harmonix's core product: migrating from an extension injected into every web page to a single Side Panel, simplifying the architecture, removing unused features, and improving product stability."
+description: "Redesign of Harmonix's core product: migrating from an extension injected into every web page to a single Side Panel."
 thumbnail: "../../../assets/case-studies/sidepanel/thumbnail.jpg"
 heroImage: "../../../assets/case-studies/sidepanel/hero.jpg"
-role: "Product designer"
-timeline: "1 year"
-tools: ["Figma"]
-team: "Harmonix"
+role: "Product designer & product owner"
+timeline: "2025 – Mar 2026"
+company: "Harmonix"
+platform: "Chrome extension"
 context: "Harmonix · Rollout"
 year: "2025–2026"
+summary:
+  problem: "Every page where the extension loaded ran its own instance of it, causing reloads, dropped calls and lost context. Years of added features had also buried the ones reps actually used."
+  role: "Product designer for the full redesign, and de facto product owner at the time. I tested ideas with a few key clients and decided with the CTO what to cut and what to merge."
+  outcome: "A single Side Panel replaced the injected extension, so it worked on every page in the browser, with unused sections removed and tasks and inbox merged. It was weeks away from rolling out to the extension's 877 active reps when Harmonix shut down in March 2026."
 order: 1
 lang: "en"
 slug: "sidepanel"
@@ -26,7 +30,7 @@ import showcase from '../../../assets/case-studies/sidepanel/showcase.jpg';
 
 As a Google Chrome extension, it requires specific Google permissions to overlay on any web page.
 
-## The Problem
+## The problem
 
 The extension had an architectural problem that directly affected the experience. Every time a user navigated to a new page, a new instance of the extension was loaded — with its own phone dialer, email, messaging — which caused conflicts between instances, unexpected reloads, and loss of context. On top of that, each web page has a different internal structure, which required a custom adaptation process to ensure the extension didn't cover or displace each site's native elements.
 
@@ -36,7 +40,7 @@ The opportunity appeared when Google introduced the Side Panel: a dedicated brow
 
 ![Original extension](../../../assets/case-studies/sidepanel/old-extension.jpg)
 
-## What Customers Told Us
+## What customers told us
 
 Customer feedback reflected the architectural problems as concrete frustrations: calls sometimes didn't come through, the extension reloaded after a period of inactivity, it sometimes didn't appear where it should, and synchronization between views wasn't reliable. These were different symptoms of the same underlying issue — each page loaded its own instance and there was no guarantee of stability.
 
@@ -55,15 +59,15 @@ The redesign couldn't just be a change of container. It also had to be an opport
   caption="Redesigned Side Panel"
 />
 
-### One Instance, One Persistent Context
+### One instance, one persistent context
 
-Migrating to the Side Panel solved the multiple-instance problem at its root. The extension now lives in a single browser space, independent of whatever page the user has open. This eliminated unexpected reloads, dialer conflicts, and context loss when navigating. For development it meant a much more manageable control point; for users, an extension that finally behaves predictably.
+Migrating to the Side Panel solved the multiple-instance problem at its root. The extension now lives in a single browser space, independent of whatever page the user has open. In internal testing — our own sales reps used it day to day, like any customer — this eliminated unexpected reloads, dialer conflicts, and context loss when navigating. For development it meant a much more manageable control point; for users, an extension that finally behaves predictably.
 
-### Removing What's Unused, Merging What's Redundant
+### Removing what's unused, merging what's redundant
 
 The change of container brought the opportunity to review all the content. Sections nobody used — nurturing, outbox — were removed. Those that were too similar, like tasks and inbox, were merged into a single view. The goal was for every element in the Side Panel to justify its presence: if it didn't deliver demonstrable value, it didn't deserve the space.
 
-### Reorganizing Navigation for a Smaller Space
+### Reorganizing navigation for a smaller space
 
 The original extension had a left sidebar for navigating between general views (tasks, inbox, pipeline) and a contact detail area on the right with activity history, follow-up suggestions, and AI agent reports. When compressing everything into the Side Panel, that structure no longer worked. Navigation was redesigned so that primary views and contact detail could coexist fluidly in a smaller space, prioritizing what users consulted most frequently.
 
@@ -73,4 +77,4 @@ This was a year-long project and the hardest decision wasn't technical — it wa
 
 The Side Panel migration forced that conversation. It wasn't possible to carry everything over as-is into a smaller space, so every feature had to earn its place. That constraint turned out to be the project's best design tool: it forced decisions that had been pending for a long time.
 
-If I were to continue iterating, I'd focus on measuring how the simplification has affected adoption of the features that were kept, and on exploring how the Side Panel could adapt contextually — surfacing different information depending on which page the user has open, without falling back into the problems of the previous architecture.
+If it had reached customers, I'd have focused on measuring how the simplification affected adoption of the features we kept, and on exploring how the Side Panel could adapt contextually — surfacing different information depending on which page the user has open, without falling back into the problems of the previous architecture.

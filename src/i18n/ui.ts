@@ -31,9 +31,9 @@ export const ui = {
     'caseStudy.nextProject': 'Next Project',
     'caseStudy.role': 'Role',
     'caseStudy.myRole': 'My role',
-    'caseStudy.timeline': 'Timeline',
-    'caseStudy.tools': 'Tools',
-    'caseStudy.team': 'Team',
+    'caseStudy.timeline': 'Dates',
+    'caseStudy.platform': 'Platform',
+    'caseStudy.company': 'Company',
     // Footer
     'footer.rights': 'All rights reserved.',
     // Theme
@@ -75,9 +75,9 @@ export const ui = {
     'caseStudy.nextProject': 'Siguiente proyecto',
     'caseStudy.role': 'Rol',
     'caseStudy.myRole': 'Mi rol',
-    'caseStudy.timeline': 'Duración',
-    'caseStudy.tools': 'Herramientas',
-    'caseStudy.team': 'Equipo',
+    'caseStudy.timeline': 'Fechas',
+    'caseStudy.platform': 'Plataforma',
+    'caseStudy.company': 'Empresa',
     // Footer
     'footer.rights': 'Todos los derechos reservados.',
     // Theme

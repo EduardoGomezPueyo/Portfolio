@@ -133,6 +133,16 @@ h1, h2, h3, h4 {
   margin-top: 0;
 }
 
+/* Subsections: more space before a subheading than inside it, so each heading groups with its content */
+.case-study-body > h3 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.case-study-body > h2 + h3 {
+  margin-top: 0;
+}
+
 /* --- Image blur-loading effect --- */
 img:not([data-no-blur]),
 video:not([data-no-blur]) {
