@@ -2,7 +2,7 @@ export const ui = {
   en: {
     // Nav
     'nav.caseStudies': 'Case Studies',
-    'nav.work': 'Work',
+    'nav.gallery': 'Gallery',
     'nav.about': 'About',
     // Hero
     'hero.greeting': 'Eduardo Gómez Pueyo',
@@ -46,7 +46,7 @@ export const ui = {
   es: {
     // Nav
     'nav.caseStudies': 'Casos de estudio',
-    'nav.work': 'Work',
+    'nav.gallery': 'Galería',
     'nav.about': 'Sobre mí',
     // Hero
     'hero.greeting': 'Eduardo Gómez Pueyo',

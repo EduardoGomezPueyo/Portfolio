@@ -10,7 +10,7 @@ const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
 
 const caseStudiesPath = getLocalizedPath("/", lang);
-const workPath = getLocalizedPath("/work", lang);
+const galleryPath = getLocalizedPath("/gallery", lang);
 const aboutPath = getLocalizedPath("/about", lang);
 ---
 
@@ -18,7 +18,7 @@ const aboutPath = getLocalizedPath("/about", lang);
   class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-neutral-50/80 border-b border-neutral-200/50"
 >
   <div
-    class="w-full px-6 grid grid-cols-[1fr_auto_1fr] gap-4 items-center h-16"
+    class="w-full px-6 grid grid-cols-[1fr_auto_1fr] gap-3 sm:gap-4 items-center h-16"
   >
     <!-- Left: Name -->
     <div class="justify-self-start">
@@ -31,9 +31,9 @@ const aboutPath = getLocalizedPath("/about", lang);
       </a>
     </div>
 
-    <!-- Center: Case Studies + Work + About -->
+    <!-- Center: Case Studies + Gallery + About -->
     <div
-      class="flex items-center gap-4 sm:gap-6 text-sm font-semibold"
+      class="flex items-center gap-3 sm:gap-6 text-sm font-semibold"
     >
       <a
         href={caseStudiesPath}
@@ -42,10 +42,10 @@ const aboutPath = getLocalizedPath("/about", lang);
         {t("nav.caseStudies")}
       </a>
       <a
-        href={workPath}
-        class={`transition-colors ${currentPath.replace(/\/$/, "") === workPath.replace(/\/$/, "") ? "text-neutral-950 font-bold" : "text-neutral-600 hover:text-neutral-950"}`}
+        href={galleryPath}
+        class={`transition-colors ${currentPath.replace(/\/$/, "") === galleryPath.replace(/\/$/, "") ? "text-neutral-950 font-bold" : "text-neutral-600 hover:text-neutral-950"}`}
       >
-        {t("nav.work")}
+        {t("nav.gallery")}
       </a>
       <a
         href={aboutPath}

@@ -32,7 +32,12 @@
 # Spanish version removed: send old /es URLs to their English equivalents
 [[redirects]]
   from = "/es/showcase"
-  to = "/work"
+  to = "/gallery"
+  status = 301
+
+[[redirects]]
+  from = "/es/work"
+  to = "/gallery"
   status = 301
 
 [[redirects]]
@@ -58,4 +63,10 @@
 [[redirects]]
   from = "/case-studies"
   to = "/"
+  status = 301
+
+# The image grid moved from /work to /gallery; case studies stay at /work/<slug>
+[[redirects]]
+  from = "/work"
+  to = "/gallery"
   status = 301
