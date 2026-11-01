@@ -41,7 +41,7 @@ export const ui = {
     'theme.dark': 'Dark',
     // Meta
     'meta.title': 'Eduardo Gómez Pueyo — Product Designer',
-    'meta.description': 'Portfolio of Eduardo Gómez Pueyo, Product Designer. Designing simple, functional, and human-centered digital products.',
+    'meta.description': 'Product designer with 5+ years in complex B2B software. I turn dense workflows (AI agents, CRM integrations, analytics) into tools anyone can use.',
   },
   es: {
     // Nav
